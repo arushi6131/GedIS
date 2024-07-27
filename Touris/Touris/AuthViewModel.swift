@@ -1,15 +1,9 @@
-
-//  AuthViewModel.swift
-//  Touris
-//
-//  Created by Jaysen Gomez on 7/26/24.
-//
-
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
+import SwiftUI
 
 struct Location: Codable {
     var name: String
@@ -23,11 +17,11 @@ struct Itinerary: Codable {
     var locations: [Location]
 }
 
-
 class AuthViewModel: ObservableObject {
     @Published var errorMessage = ""
     @Published var currentUserID = Auth.auth().currentUser?.uid
     @Published var isSignedIn = false
+    @Published var allItineraries: [Itinerary] = []
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
 
@@ -128,6 +122,38 @@ class AuthViewModel: ObservableObject {
                 completion(.success(image))
             } else {
                 completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to load image."])))
+            }
+        }
+    }
+    
+    // Retrieve all itineraries from all users
+    func getAllItineraries(completion: @escaping (Result<[Itinerary], Error>) -> Void) {
+        db.collection("users").getDocuments { (userSnapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else if let userSnapshot = userSnapshot {
+                var allItineraries: [Itinerary] = []
+                let dispatchGroup = DispatchGroup()
+                
+                for userDocument in userSnapshot.documents {
+                    dispatchGroup.enter()
+                    self.db.collection("users").document(userDocument.documentID).collection("itineraries").getDocuments { (itinerarySnapshot, error) in
+                        if let error = error {
+                            print("Error fetching itineraries for user \(userDocument.documentID): \(error)")
+                        } else if let itinerarySnapshot = itinerarySnapshot {
+                            let itineraries = itinerarySnapshot.documents.compactMap { document -> Itinerary? in
+                                try? document.data(as: Itinerary.self)
+                            }
+                            allItineraries.append(contentsOf: itineraries)
+                        }
+                        dispatchGroup.leave()
+                    }
+                }
+                
+                dispatchGroup.notify(queue: .main) {
+                    self.allItineraries = allItineraries
+                    completion(.success(allItineraries))
+                }
             }
         }
     }
