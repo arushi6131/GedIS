@@ -1,0 +1,6 @@
+framework module Pods_Touris_TourisUITests {
+  umbrella header "Pods-Touris-TourisUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

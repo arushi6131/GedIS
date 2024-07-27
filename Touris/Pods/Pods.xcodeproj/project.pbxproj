@@ -1,0 +1,1010 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DE6F5233589BBDF4EC03D22DCEC7AFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		1644530B9087632C39A06B30C8371A51 /* CircleRotateAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5973ACFF68D269105D50B3A0A4AEB03 /* CircleRotateAnimatable.swift */; };
+		1700B992223AB3E7410F712CA99D745A /* EasingAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0869AA2F90E19388312EC24D7F2AF9 /* EasingAnimatable.swift */; };
+		1ABF3063497D422EFD449E0AEE6029A4 /* Gemini-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C6ACB713544190B1C43BCE96B0ECA /* Gemini-dummy.m */; };
+		1BBF4D7C8F0AB61D9414B4F4DC17599A /* GeminiCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB55584C607D87C6B41DDC9950E507 /* GeminiCollectionView.swift */; };
+		27CBB2C8F56B726D093A794403FD160F /* Pods-TourisTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DDB29CDB2E6208B4E40394C7216B97D /* Pods-TourisTests-dummy.m */; };
+		313E56B016048B97AB843060B2373FF2 /* CustomAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2558DCB9D2C38160BCF369AA90F6B2 /* CustomAnimatable.swift */; };
+		335A82F3DE92994F230B5204DD315091 /* PitchRotationAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB9BC44B89CCE09AC81067C1678E57 /* PitchRotationAnimatable.swift */; };
+		35C80E849FFEDEC930122285C3A4427F /* Pods-Touris-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D351DA22DEE176586B58D0E69B6606E2 /* Pods-Touris-dummy.m */; };
+		388566174D01668D6254BF94B79904B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		5D901EB0E8E860D376E6514F5D5D3579 /* YawRotationAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B464A7752E7BBDE7E1411FAC558EC1 /* YawRotationAnimatable.swift */; };
+		65CBB4BBD05C25160FEA1C2BDADCF6A1 /* GeminiAnimationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A531CD087836253E9D2A1A4A2E17AF /* GeminiAnimationModel.swift */; };
+		6638D246331476F1C6B2A89410548133 /* CubeAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60411D217AC6DDD06C27F07E9FFCB7A3 /* CubeAnimatable.swift */; };
+		8A79169564F51EF15E32C1951308CD0E /* ScaleAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708459084535B269C42FE6F84B914AFA /* ScaleAnimatable.swift */; };
+		91C6FF10683BE77C5542483389F5C372 /* Pods-Touris-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 72F87BE71FF91EFF8395B679C1F6052F /* Pods-Touris-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96AC5BB2CDF17641D8416FB455042843 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF3B5DA4260FAE33BF462B7C51176C /* UIViewExtension.swift */; };
+		9F1A76F96078AED77F58A3E3F2F5FCF8 /* EasingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6A608E9B800CE4F3D735A1213568B2 /* EasingFunction.swift */; };
+		BBD15B11B998BCBECBCF30D64FD7E8BB /* Gemini-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 299424475193EC60DB9C7E4596063C00 /* Gemini-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C39B5B85A8187BC73414A324B4279B7E /* UIAppearanceAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51D6FB22B25046F2B0514432049C24 /* UIAppearanceAnimatable.swift */; };
+		CBD1BED27F9A07A931FA719705962A64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		D6B3B83B4CFC9DD9779C4F29240F5AF6 /* RollRotationAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6AC68C4C9164CB3C2093DCD83BE268 /* RollRotationAnimatable.swift */; };
+		D70D6E088083F74A3767131215ADFF1C /* Pods-TourisTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 529B854ED9B6A1C48E7C8DADBAB7A68E /* Pods-TourisTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC0C95D073E9F21B89257A261B2C439F /* Pods-Touris-TourisUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B557F078A3AAEAA249614A061EF73CC /* Pods-Touris-TourisUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2EE6FC76DF6528CD61AD60B143B8FBB /* Pods-Touris-TourisUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB9CFEC87CAD5F74248E0F40511D69 /* Pods-Touris-TourisUITests-dummy.m */; };
+		EB21B7D3A2DB02DEC1B20939F1BA90D6 /* GeminiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3E9B8F80F441EF6126BB1E5053624 /* GeminiCell.swift */; };
+		FB50CB27C1C90196031846FA4E00E214 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		375C8C52BC6ACF6E8BA4662442E829E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 151ACA047359F782729043AF5360AC1B;
+			remoteInfo = "Pods-Touris";
+		};
+		A21129038CAC4FD35FF60B9957542036 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6AC3B95F2D31FE0816D1936AFDFC4F5;
+			remoteInfo = Gemini;
+		};
+		A9CA9DF859C4C54041555D5B81F8B447 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6AC3B95F2D31FE0816D1936AFDFC4F5;
+			remoteInfo = Gemini;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01ED62837D83494F4DB310414C1A7E6A /* Pods-Touris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Touris.release.xcconfig"; sourceTree = "<group>"; };
+		09DB55584C607D87C6B41DDC9950E507 /* GeminiCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeminiCollectionView.swift; path = Gemini/GeminiCollectionView.swift; sourceTree = "<group>"; };
+		0A712B386C94399B793D4CA98FF11357 /* Pods-Touris-TourisUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Touris-TourisUITests.modulemap"; sourceTree = "<group>"; };
+		0D96FAAB337AAE59EE234C9E333FCD45 /* Pods-TourisTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TourisTests-Info.plist"; sourceTree = "<group>"; };
+		0EFBCA9EFBB78413351105D4EBD5D8CF /* Pods-Touris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Touris.debug.xcconfig"; sourceTree = "<group>"; };
+		15677B26C79D4258F3C30E27FCC5905D /* Pods-Touris-TourisUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Touris-TourisUITests"; path = Pods_Touris_TourisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F053DFDFDA1550E79FD7C402EE157DE /* Pods-Touris-TourisUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Touris-TourisUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		28B759A5342E1F5FE7F77178DAD8BEF4 /* Pods-Touris-TourisUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Touris-TourisUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		299424475193EC60DB9C7E4596063C00 /* Gemini-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Gemini-umbrella.h"; sourceTree = "<group>"; };
+		2AFB9CFEC87CAD5F74248E0F40511D69 /* Pods-Touris-TourisUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Touris-TourisUITests-dummy.m"; sourceTree = "<group>"; };
+		2B557F078A3AAEAA249614A061EF73CC /* Pods-Touris-TourisUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Touris-TourisUITests-umbrella.h"; sourceTree = "<group>"; };
+		3566ACD04CA6B4738DB548FCD409DFAD /* Gemini.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Gemini.modulemap; sourceTree = "<group>"; };
+		36E89D222B1DFA9F05AD1CA756A32DF5 /* Pods-Touris-TourisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Touris-TourisUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3702673EEC9047444F37CF6B50B3713F /* Pods-Touris-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Touris-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3A6A608E9B800CE4F3D735A1213568B2 /* EasingFunction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasingFunction.swift; path = Gemini/EasingFunction.swift; sourceTree = "<group>"; };
+		4D156D17E96BBDE06BE6BB36DD401BF0 /* Pods-Touris-TourisUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Touris-TourisUITests-Info.plist"; sourceTree = "<group>"; };
+		4E79958862A94A99F0A40F883CEB810E /* Gemini */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Gemini; path = Gemini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		529B854ED9B6A1C48E7C8DADBAB7A68E /* Pods-TourisTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TourisTests-umbrella.h"; sourceTree = "<group>"; };
+		52B89983BAEFBB6FA4CEF2D8F88FF4B2 /* Gemini-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Gemini-prefix.pch"; sourceTree = "<group>"; };
+		60411D217AC6DDD06C27F07E9FFCB7A3 /* CubeAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CubeAnimatable.swift; path = Gemini/CubeAnimatable.swift; sourceTree = "<group>"; };
+		67A702EFF82F5E2BEE157FC1670C65A5 /* Pods-Touris-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Touris-Info.plist"; sourceTree = "<group>"; };
+		708459084535B269C42FE6F84B914AFA /* ScaleAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScaleAnimatable.swift; path = Gemini/ScaleAnimatable.swift; sourceTree = "<group>"; };
+		72F87BE71FF91EFF8395B679C1F6052F /* Pods-Touris-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Touris-umbrella.h"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		746944B3635E65438A96E51AEEA86929 /* Pods-TourisTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TourisTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		799FCE2694F20ED566F772D71A95BFDB /* Gemini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Gemini.debug.xcconfig; sourceTree = "<group>"; };
+		7A7EFBB115C7BC6F78280E6423042CE9 /* Gemini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Gemini.release.xcconfig; sourceTree = "<group>"; };
+		7CF32E059B15A8E9F6FCA50C71879323 /* Pods-Touris-TourisUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Touris-TourisUITests-frameworks.sh"; sourceTree = "<group>"; };
+		7F5BB3B95E8E090B3F1CA5B93B0A7F22 /* Pods-TourisTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TourisTests.modulemap"; sourceTree = "<group>"; };
+		8104B59266116B2BCDFB25671BDACB21 /* Pods-Touris-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Touris-frameworks.sh"; sourceTree = "<group>"; };
+		83DB9BC44B89CCE09AC81067C1678E57 /* PitchRotationAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PitchRotationAnimatable.swift; path = Gemini/PitchRotationAnimatable.swift; sourceTree = "<group>"; };
+		8F0C6ACB713544190B1C43BCE96B0ECA /* Gemini-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Gemini-dummy.m"; sourceTree = "<group>"; };
+		921FC938F67E190F9DE8352C50C80A27 /* Gemini-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Gemini-Info.plist"; sourceTree = "<group>"; };
+		92B464A7752E7BBDE7E1411FAC558EC1 /* YawRotationAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YawRotationAnimatable.swift; path = Gemini/YawRotationAnimatable.swift; sourceTree = "<group>"; };
+		94DAE77CC232B459A44E287CB18725E9 /* Pods-Touris */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Touris"; path = Pods_Touris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DDB29CDB2E6208B4E40394C7216B97D /* Pods-TourisTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TourisTests-dummy.m"; sourceTree = "<group>"; };
+		A0A531CD087836253E9D2A1A4A2E17AF /* GeminiAnimationModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeminiAnimationModel.swift; path = Gemini/GeminiAnimationModel.swift; sourceTree = "<group>"; };
+		A28B35067DDE36B1C2AFF6019704E981 /* Pods-Touris-TourisUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Touris-TourisUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A47B954F7A32B35A8C72CAB50C8BD264 /* Pods-TourisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TourisTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BDFF3B5DA4260FAE33BF462B7C51176C /* UIViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = Gemini/UIViewExtension.swift; sourceTree = "<group>"; };
+		C53E9357609BDD033C7B21CF2C233FDF /* Pods-Touris.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Touris.modulemap"; sourceTree = "<group>"; };
+		C9B3E9B8F80F441EF6126BB1E5053624 /* GeminiCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeminiCell.swift; path = Gemini/GeminiCell.swift; sourceTree = "<group>"; };
+		CD0C763B1BAE3720C33E8C1B23546144 /* Pods-TourisTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-TourisTests"; path = Pods_TourisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE15FE1ADC8DEDACD197087C7C506600 /* Pods-TourisTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TourisTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		D351DA22DEE176586B58D0E69B6606E2 /* Pods-Touris-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Touris-dummy.m"; sourceTree = "<group>"; };
+		DB2558DCB9D2C38160BCF369AA90F6B2 /* CustomAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomAnimatable.swift; path = Gemini/CustomAnimatable.swift; sourceTree = "<group>"; };
+		DC8A04AF9AAADD0B26589A3D75EF76B4 /* Pods-Touris-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Touris-acknowledgements.plist"; sourceTree = "<group>"; };
+		DE51D6FB22B25046F2B0514432049C24 /* UIAppearanceAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIAppearanceAnimatable.swift; path = Gemini/UIAppearanceAnimatable.swift; sourceTree = "<group>"; };
+		E5973ACFF68D269105D50B3A0A4AEB03 /* CircleRotateAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CircleRotateAnimatable.swift; path = Gemini/CircleRotateAnimatable.swift; sourceTree = "<group>"; };
+		FC0869AA2F90E19388312EC24D7F2AF9 /* EasingAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasingAnimatable.swift; path = Gemini/EasingAnimatable.swift; sourceTree = "<group>"; };
+		FE6AC68C4C9164CB3C2093DCD83BE268 /* RollRotationAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RollRotationAnimatable.swift; path = Gemini/RollRotationAnimatable.swift; sourceTree = "<group>"; };
+		FF9504B62FE3FD4C905E7EC9F3FBCE17 /* Pods-TourisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TourisTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0397B0E9DB8BA2C24BE1A41A0F054A98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB50CB27C1C90196031846FA4E00E214 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17F3AB7A7560D574757AC5659183ACBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBD1BED27F9A07A931FA719705962A64 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3663F1B3DDE072E9151016CEA98C3AD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				388566174D01668D6254BF94B79904B4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F98635CF24355E700953C313AEDBCF90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DE6F5233589BBDF4EC03D22DCEC7AFB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0422B19A069D0D6B48D454936737EBEA /* Gemini */ = {
+			isa = PBXGroup;
+			children = (
+				E5973ACFF68D269105D50B3A0A4AEB03 /* CircleRotateAnimatable.swift */,
+				60411D217AC6DDD06C27F07E9FFCB7A3 /* CubeAnimatable.swift */,
+				DB2558DCB9D2C38160BCF369AA90F6B2 /* CustomAnimatable.swift */,
+				FC0869AA2F90E19388312EC24D7F2AF9 /* EasingAnimatable.swift */,
+				3A6A608E9B800CE4F3D735A1213568B2 /* EasingFunction.swift */,
+				A0A531CD087836253E9D2A1A4A2E17AF /* GeminiAnimationModel.swift */,
+				C9B3E9B8F80F441EF6126BB1E5053624 /* GeminiCell.swift */,
+				09DB55584C607D87C6B41DDC9950E507 /* GeminiCollectionView.swift */,
+				83DB9BC44B89CCE09AC81067C1678E57 /* PitchRotationAnimatable.swift */,
+				FE6AC68C4C9164CB3C2093DCD83BE268 /* RollRotationAnimatable.swift */,
+				708459084535B269C42FE6F84B914AFA /* ScaleAnimatable.swift */,
+				DE51D6FB22B25046F2B0514432049C24 /* UIAppearanceAnimatable.swift */,
+				BDFF3B5DA4260FAE33BF462B7C51176C /* UIViewExtension.swift */,
+				92B464A7752E7BBDE7E1411FAC558EC1 /* YawRotationAnimatable.swift */,
+				5A30A3C2357802255678DE6B393985C1 /* Support Files */,
+			);
+			name = Gemini;
+			path = Gemini;
+			sourceTree = "<group>";
+		};
+		0E5F1301104C9F05881558C7AFDBF002 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A3FD77DBDE0D5169338F35977CD147E4 /* Pods-Touris */,
+				865C8B964E32FC324D43705790A96BF1 /* Pods-Touris-TourisUITests */,
+				890F66D97073729842AFF9628D875839 /* Pods-TourisTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5A30A3C2357802255678DE6B393985C1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3566ACD04CA6B4738DB548FCD409DFAD /* Gemini.modulemap */,
+				8F0C6ACB713544190B1C43BCE96B0ECA /* Gemini-dummy.m */,
+				921FC938F67E190F9DE8352C50C80A27 /* Gemini-Info.plist */,
+				52B89983BAEFBB6FA4CEF2D8F88FF4B2 /* Gemini-prefix.pch */,
+				299424475193EC60DB9C7E4596063C00 /* Gemini-umbrella.h */,
+				799FCE2694F20ED566F772D71A95BFDB /* Gemini.debug.xcconfig */,
+				7A7EFBB115C7BC6F78280E6423042CE9 /* Gemini.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Gemini";
+			sourceTree = "<group>";
+		};
+		7856A93C4961AD6697457A3C4D637766 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0422B19A069D0D6B48D454936737EBEA /* Gemini */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		84315C185E693F647B12D86EA3623BE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4E79958862A94A99F0A40F883CEB810E /* Gemini */,
+				94DAE77CC232B459A44E287CB18725E9 /* Pods-Touris */,
+				15677B26C79D4258F3C30E27FCC5905D /* Pods-Touris-TourisUITests */,
+				CD0C763B1BAE3720C33E8C1B23546144 /* Pods-TourisTests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		865C8B964E32FC324D43705790A96BF1 /* Pods-Touris-TourisUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0A712B386C94399B793D4CA98FF11357 /* Pods-Touris-TourisUITests.modulemap */,
+				A28B35067DDE36B1C2AFF6019704E981 /* Pods-Touris-TourisUITests-acknowledgements.markdown */,
+				1F053DFDFDA1550E79FD7C402EE157DE /* Pods-Touris-TourisUITests-acknowledgements.plist */,
+				2AFB9CFEC87CAD5F74248E0F40511D69 /* Pods-Touris-TourisUITests-dummy.m */,
+				7CF32E059B15A8E9F6FCA50C71879323 /* Pods-Touris-TourisUITests-frameworks.sh */,
+				4D156D17E96BBDE06BE6BB36DD401BF0 /* Pods-Touris-TourisUITests-Info.plist */,
+				2B557F078A3AAEAA249614A061EF73CC /* Pods-Touris-TourisUITests-umbrella.h */,
+				28B759A5342E1F5FE7F77178DAD8BEF4 /* Pods-Touris-TourisUITests.debug.xcconfig */,
+				36E89D222B1DFA9F05AD1CA756A32DF5 /* Pods-Touris-TourisUITests.release.xcconfig */,
+			);
+			name = "Pods-Touris-TourisUITests";
+			path = "Target Support Files/Pods-Touris-TourisUITests";
+			sourceTree = "<group>";
+		};
+		890F66D97073729842AFF9628D875839 /* Pods-TourisTests */ = {
+			isa = PBXGroup;
+			children = (
+				7F5BB3B95E8E090B3F1CA5B93B0A7F22 /* Pods-TourisTests.modulemap */,
+				746944B3635E65438A96E51AEEA86929 /* Pods-TourisTests-acknowledgements.markdown */,
+				CE15FE1ADC8DEDACD197087C7C506600 /* Pods-TourisTests-acknowledgements.plist */,
+				9DDB29CDB2E6208B4E40394C7216B97D /* Pods-TourisTests-dummy.m */,
+				0D96FAAB337AAE59EE234C9E333FCD45 /* Pods-TourisTests-Info.plist */,
+				529B854ED9B6A1C48E7C8DADBAB7A68E /* Pods-TourisTests-umbrella.h */,
+				A47B954F7A32B35A8C72CAB50C8BD264 /* Pods-TourisTests.debug.xcconfig */,
+				FF9504B62FE3FD4C905E7EC9F3FBCE17 /* Pods-TourisTests.release.xcconfig */,
+			);
+			name = "Pods-TourisTests";
+			path = "Target Support Files/Pods-TourisTests";
+			sourceTree = "<group>";
+		};
+		A3FD77DBDE0D5169338F35977CD147E4 /* Pods-Touris */ = {
+			isa = PBXGroup;
+			children = (
+				C53E9357609BDD033C7B21CF2C233FDF /* Pods-Touris.modulemap */,
+				3702673EEC9047444F37CF6B50B3713F /* Pods-Touris-acknowledgements.markdown */,
+				DC8A04AF9AAADD0B26589A3D75EF76B4 /* Pods-Touris-acknowledgements.plist */,
+				D351DA22DEE176586B58D0E69B6606E2 /* Pods-Touris-dummy.m */,
+				8104B59266116B2BCDFB25671BDACB21 /* Pods-Touris-frameworks.sh */,
+				67A702EFF82F5E2BEE157FC1670C65A5 /* Pods-Touris-Info.plist */,
+				72F87BE71FF91EFF8395B679C1F6052F /* Pods-Touris-umbrella.h */,
+				0EFBCA9EFBB78413351105D4EBD5D8CF /* Pods-Touris.debug.xcconfig */,
+				01ED62837D83494F4DB310414C1A7E6A /* Pods-Touris.release.xcconfig */,
+			);
+			name = "Pods-Touris";
+			path = "Target Support Files/Pods-Touris";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				7856A93C4961AD6697457A3C4D637766 /* Pods */,
+				84315C185E693F647B12D86EA3623BE0 /* Products */,
+				0E5F1301104C9F05881558C7AFDBF002 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8B2A71E59FF55865E705680C4275CAC3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D70D6E088083F74A3767131215ADFF1C /* Pods-TourisTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B8AD56846BAA38F1B19F9E38057DF55 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91C6FF10683BE77C5542483389F5C372 /* Pods-Touris-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8EE1A6B78A81D70B55E01806892097DB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBD15B11B998BCBECBCF30D64FD7E8BB /* Gemini-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F64E29E74E2DAB0ABC2CA309ACFCA285 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC0C95D073E9F21B89257A261B2C439F /* Pods-Touris-TourisUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		151ACA047359F782729043AF5360AC1B /* Pods-Touris */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 260C4726042C3E6C2BDF06BC5FF9A3E6 /* Build configuration list for PBXNativeTarget "Pods-Touris" */;
+			buildPhases = (
+				8B8AD56846BAA38F1B19F9E38057DF55 /* Headers */,
+				002FF6605604F276C8A1B3812D8AB497 /* Sources */,
+				17F3AB7A7560D574757AC5659183ACBB /* Frameworks */,
+				DD355E8FA193F30DCC4732C281985064 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6AF479AD89E6287E102319541886325B /* PBXTargetDependency */,
+			);
+			name = "Pods-Touris";
+			productName = Pods_Touris;
+			productReference = 94DAE77CC232B459A44E287CB18725E9 /* Pods-Touris */;
+			productType = "com.apple.product-type.framework";
+		};
+		3E469C07717D941DF7DABDD154CBDF3A /* Pods-TourisTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35F52EC9CEA783E9EFBB2D6E82C085E3 /* Build configuration list for PBXNativeTarget "Pods-TourisTests" */;
+			buildPhases = (
+				8B2A71E59FF55865E705680C4275CAC3 /* Headers */,
+				2220F4EC9622ABE4E90048274DEAC7BF /* Sources */,
+				F98635CF24355E700953C313AEDBCF90 /* Frameworks */,
+				505E7A02A7CFC18AA36A83D59FB92E17 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5115E07AE6B0A2C0A23CEDA6B9BB66E /* PBXTargetDependency */,
+			);
+			name = "Pods-TourisTests";
+			productName = Pods_TourisTests;
+			productReference = CD0C763B1BAE3720C33E8C1B23546144 /* Pods-TourisTests */;
+			productType = "com.apple.product-type.framework";
+		};
+		7ED7356049CA53D392F3E134DEB11DFC /* Pods-Touris-TourisUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7E89D2B30FADDAC6EC28654399C6344 /* Build configuration list for PBXNativeTarget "Pods-Touris-TourisUITests" */;
+			buildPhases = (
+				F64E29E74E2DAB0ABC2CA309ACFCA285 /* Headers */,
+				0B2579EC8B73C13A4FD0C8C0949EECCD /* Sources */,
+				0397B0E9DB8BA2C24BE1A41A0F054A98 /* Frameworks */,
+				3157DE2DE2511D828FA83F592C6180DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3776EA54F881FCD734FB7A8B33F5E118 /* PBXTargetDependency */,
+			);
+			name = "Pods-Touris-TourisUITests";
+			productName = Pods_Touris_TourisUITests;
+			productReference = 15677B26C79D4258F3C30E27FCC5905D /* Pods-Touris-TourisUITests */;
+			productType = "com.apple.product-type.framework";
+		};
+		A6AC3B95F2D31FE0816D1936AFDFC4F5 /* Gemini */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6475238BB09AAF0FB50939C40809CC87 /* Build configuration list for PBXNativeTarget "Gemini" */;
+			buildPhases = (
+				8EE1A6B78A81D70B55E01806892097DB /* Headers */,
+				9E81C879DAED884F5AC60615C2EA7616 /* Sources */,
+				3663F1B3DDE072E9151016CEA98C3AD1 /* Frameworks */,
+				796ABDBDF4E76B48EA2E3E299981B259 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gemini;
+			productName = Gemini;
+			productReference = 4E79958862A94A99F0A40F883CEB810E /* Gemini */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 84315C185E693F647B12D86EA3623BE0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6AC3B95F2D31FE0816D1936AFDFC4F5 /* Gemini */,
+				151ACA047359F782729043AF5360AC1B /* Pods-Touris */,
+				7ED7356049CA53D392F3E134DEB11DFC /* Pods-Touris-TourisUITests */,
+				3E469C07717D941DF7DABDD154CBDF3A /* Pods-TourisTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3157DE2DE2511D828FA83F592C6180DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		505E7A02A7CFC18AA36A83D59FB92E17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		796ABDBDF4E76B48EA2E3E299981B259 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD355E8FA193F30DCC4732C281985064 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		002FF6605604F276C8A1B3812D8AB497 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35C80E849FFEDEC930122285C3A4427F /* Pods-Touris-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B2579EC8B73C13A4FD0C8C0949EECCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2EE6FC76DF6528CD61AD60B143B8FBB /* Pods-Touris-TourisUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2220F4EC9622ABE4E90048274DEAC7BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27CBB2C8F56B726D093A794403FD160F /* Pods-TourisTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E81C879DAED884F5AC60615C2EA7616 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1644530B9087632C39A06B30C8371A51 /* CircleRotateAnimatable.swift in Sources */,
+				6638D246331476F1C6B2A89410548133 /* CubeAnimatable.swift in Sources */,
+				313E56B016048B97AB843060B2373FF2 /* CustomAnimatable.swift in Sources */,
+				1700B992223AB3E7410F712CA99D745A /* EasingAnimatable.swift in Sources */,
+				9F1A76F96078AED77F58A3E3F2F5FCF8 /* EasingFunction.swift in Sources */,
+				1ABF3063497D422EFD449E0AEE6029A4 /* Gemini-dummy.m in Sources */,
+				65CBB4BBD05C25160FEA1C2BDADCF6A1 /* GeminiAnimationModel.swift in Sources */,
+				EB21B7D3A2DB02DEC1B20939F1BA90D6 /* GeminiCell.swift in Sources */,
+				1BBF4D7C8F0AB61D9414B4F4DC17599A /* GeminiCollectionView.swift in Sources */,
+				335A82F3DE92994F230B5204DD315091 /* PitchRotationAnimatable.swift in Sources */,
+				D6B3B83B4CFC9DD9779C4F29240F5AF6 /* RollRotationAnimatable.swift in Sources */,
+				8A79169564F51EF15E32C1951308CD0E /* ScaleAnimatable.swift in Sources */,
+				C39B5B85A8187BC73414A324B4279B7E /* UIAppearanceAnimatable.swift in Sources */,
+				96AC5BB2CDF17641D8416FB455042843 /* UIViewExtension.swift in Sources */,
+				5D901EB0E8E860D376E6514F5D5D3579 /* YawRotationAnimatable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3776EA54F881FCD734FB7A8B33F5E118 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Gemini;
+			target = A6AC3B95F2D31FE0816D1936AFDFC4F5 /* Gemini */;
+			targetProxy = A21129038CAC4FD35FF60B9957542036 /* PBXContainerItemProxy */;
+		};
+		6AF479AD89E6287E102319541886325B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Gemini;
+			target = A6AC3B95F2D31FE0816D1936AFDFC4F5 /* Gemini */;
+			targetProxy = A9CA9DF859C4C54041555D5B81F8B447 /* PBXContainerItemProxy */;
+		};
+		B5115E07AE6B0A2C0A23CEDA6B9BB66E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Touris";
+			target = 151ACA047359F782729043AF5360AC1B /* Pods-Touris */;
+			targetProxy = 375C8C52BC6ACF6E8BA4662442E829E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		341B90F4EAE7BA7CA125C9ED818EB32C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 799FCE2694F20ED566F772D71A95BFDB /* Gemini.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Gemini/Gemini-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Gemini/Gemini-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Gemini/Gemini.modulemap";
+				PRODUCT_MODULE_NAME = Gemini;
+				PRODUCT_NAME = Gemini;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8742E15C4B33B4EBF96A2225E775D7DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A7EFBB115C7BC6F78280E6423042CE9 /* Gemini.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Gemini/Gemini-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Gemini/Gemini-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Gemini/Gemini.modulemap";
+				PRODUCT_MODULE_NAME = Gemini;
+				PRODUCT_NAME = Gemini;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A6D7021E1AA96B254CBEF1879F39E457 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EFBCA9EFBB78413351105D4EBD5D8CF /* Pods-Touris.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Touris/Pods-Touris-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Touris/Pods-Touris.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A8D463C738CA38C6967188DDF78F57C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28B759A5342E1F5FE7F77178DAD8BEF4 /* Pods-Touris-TourisUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Touris-TourisUITests/Pods-Touris-TourisUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Touris-TourisUITests/Pods-Touris-TourisUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AD12DC96138EB54232EF24C420B955C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF9504B62FE3FD4C905E7EC9F3FBCE17 /* Pods-TourisTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-TourisTests/Pods-TourisTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TourisTests/Pods-TourisTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B7F0FBA08F5A16CB6662771A263C1E59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A47B954F7A32B35A8C72CAB50C8BD264 /* Pods-TourisTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-TourisTests/Pods-TourisTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TourisTests/Pods-TourisTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		E7291A09711C9B7A45C1021BDCDD94B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01ED62837D83494F4DB310414C1A7E6A /* Pods-Touris.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Touris/Pods-Touris-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Touris/Pods-Touris.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E7537F40A6F4B306D9FA19A2F2B1171F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36E89D222B1DFA9F05AD1CA756A32DF5 /* Pods-Touris-TourisUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Touris-TourisUITests/Pods-Touris-TourisUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Touris-TourisUITests/Pods-Touris-TourisUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		260C4726042C3E6C2BDF06BC5FF9A3E6 /* Build configuration list for PBXNativeTarget "Pods-Touris" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6D7021E1AA96B254CBEF1879F39E457 /* Debug */,
+				E7291A09711C9B7A45C1021BDCDD94B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35F52EC9CEA783E9EFBB2D6E82C085E3 /* Build configuration list for PBXNativeTarget "Pods-TourisTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7F0FBA08F5A16CB6662771A263C1E59 /* Debug */,
+				AD12DC96138EB54232EF24C420B955C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
+				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6475238BB09AAF0FB50939C40809CC87 /* Build configuration list for PBXNativeTarget "Gemini" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				341B90F4EAE7BA7CA125C9ED818EB32C /* Debug */,
+				8742E15C4B33B4EBF96A2225E775D7DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7E89D2B30FADDAC6EC28654399C6344 /* Build configuration list for PBXNativeTarget "Pods-Touris-TourisUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8D463C738CA38C6967188DDF78F57C7 /* Debug */,
+				E7537F40A6F4B306D9FA19A2F2B1171F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
