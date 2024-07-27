@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E5F77C862C547D72003A2A43 /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = E5F77C852C547D72003A2A43 /* ArcGISToolkit */; };
 		F58AF2AA2C5455D300B9881C /* TourisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2A92C5455D300B9881C /* TourisApp.swift */; };
 		F58AF2AC2C5455D300B9881C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2AB2C5455D300B9881C /* ContentView.swift */; };
 		F58AF2AE2C5455D500B9881C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58AF2AD2C5455D500B9881C /* Assets.xcassets */; };
@@ -61,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5F77C862C547D72003A2A43 /* ArcGISToolkit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,9 +157,6 @@
 			dependencies = (
 			);
 			name = Touris;
-			packageProductDependencies = (
-				E5F77C852C547D72003A2A43 /* ArcGISToolkit */,
-			);
 			productName = Touris;
 			productReference = F58AF2A62C5455D300B9881C /* Touris.app */;
 			productType = "com.apple.product-type.application";
@@ -234,13 +229,6 @@
 				Base,
 			);
 			mainGroup = F58AF29D2C5455D300B9881C;
-			packageReferences = (
-<<<<<<< Updated upstream
-				E5F77C842C547B5E003A2A43 /* XCRemoteSwiftPackageReference "arcgis-maps-sdk-swift-toolkit" */,
-=======
-				E5F77C832C547965003A2A43 /* XCRemoteSwiftPackageReference "arcgis-maps-sdk-swift-toolkit" */,
->>>>>>> Stashed changes
-			);
 			productRefGroup = F58AF2A72C5455D300B9881C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -637,32 +625,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-<<<<<<< Updated upstream
-		E5F77C842C547B5E003A2A43 /* XCRemoteSwiftPackageReference "arcgis-maps-sdk-swift-toolkit" */ = {
-=======
-		E5F77C832C547965003A2A43 /* XCRemoteSwiftPackageReference "arcgis-maps-sdk-swift-toolkit" */ = {
->>>>>>> Stashed changes
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Esri/arcgis-maps-sdk-swift-toolkit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 200.4.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-<<<<<<< Updated upstream
-
-/* Begin XCSwiftPackageProductDependency section */
-		E5F77C852C547D72003A2A43 /* ArcGISToolkit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E5F77C842C547B5E003A2A43 /* XCRemoteSwiftPackageReference "arcgis-maps-sdk-swift-toolkit" */;
-			productName = ArcGISToolkit;
-		};
-/* End XCSwiftPackageProductDependency section */
-=======
->>>>>>> Stashed changes
 	};
 	rootObject = F58AF29E2C5455D300B9881C /* Project object */;
 }
