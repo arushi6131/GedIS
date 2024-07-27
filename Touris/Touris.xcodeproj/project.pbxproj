@@ -14,6 +14,10 @@
 		F58AF2BC2C5455D600B9881C /* TourisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2BB2C5455D600B9881C /* TourisTests.swift */; };
 		F58AF2C62C5455D600B9881C /* TourisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2C52C5455D600B9881C /* TourisUITests.swift */; };
 		F58AF2C82C5455D600B9881C /* TourisUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2C72C5455D600B9881C /* TourisUITestsLaunchTests.swift */; };
+		F58AF2D52C54786E00B9881C /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2D42C54786E00B9881C /* FeedView.swift */; };
+		F58AF2D72C5478A200B9881C /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2D62C5478A200B9881C /* CreatePostView.swift */; };
+		F58AF2D92C5478C500B9881C /* MyTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2D82C5478C500B9881C /* MyTripView.swift */; };
+		F58AF2DB2C5478FA00B9881C /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2DA2C5478FA00B9881C /* ExploreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,10 @@
 		F58AF2C12C5455D600B9881C /* TourisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TourisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58AF2C52C5455D600B9881C /* TourisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourisUITests.swift; sourceTree = "<group>"; };
 		F58AF2C72C5455D600B9881C /* TourisUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourisUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F58AF2D42C54786E00B9881C /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		F58AF2D62C5478A200B9881C /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
+		F58AF2D82C5478C500B9881C /* MyTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripView.swift; sourceTree = "<group>"; };
+		F58AF2DA2C5478FA00B9881C /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,10 @@
 				F58AF2AD2C5455D500B9881C /* Assets.xcassets */,
 				F58AF2AF2C5455D500B9881C /* Touris.entitlements */,
 				F58AF2B02C5455D500B9881C /* Preview Content */,
+				F58AF2D42C54786E00B9881C /* FeedView.swift */,
+				F58AF2D62C5478A200B9881C /* CreatePostView.swift */,
+				F58AF2D82C5478C500B9881C /* MyTripView.swift */,
+				F58AF2DA2C5478FA00B9881C /* ExploreView.swift */,
 			);
 			path = Touris;
 			sourceTree = "<group>";
@@ -259,8 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58AF2D72C5478A200B9881C /* CreatePostView.swift in Sources */,
 				F58AF2AC2C5455D300B9881C /* ContentView.swift in Sources */,
+				F58AF2D52C54786E00B9881C /* FeedView.swift in Sources */,
 				F58AF2AA2C5455D300B9881C /* TourisApp.swift in Sources */,
+				F58AF2DB2C5478FA00B9881C /* ExploreView.swift in Sources */,
+				F58AF2D92C5478C500B9881C /* MyTripView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
