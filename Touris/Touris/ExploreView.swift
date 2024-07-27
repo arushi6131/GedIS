@@ -47,6 +47,9 @@ struct ExploreView: View {
     /// Variables to store x and y coordinates.
     @State private var xCoordinate: Double = 0.0
     @State private var yCoordinate: Double = 0.0
+    
+    /// Array to store trip locations.
+    @State private var tripLocations: [(x: Double, y: Double)] = []
 
     var body: some View {
         MapViewReader { proxy in
@@ -71,13 +74,25 @@ struct ExploreView: View {
             .callout(placement: $calloutPlacement.animation()) { placement in
                 VStack {
                     if let attributes = placement.geoElement?.attributes {
-                        Text("\(attributes["PlaceName"] ?? "N/A")")
-                        Text("Address: \(attributes["Place_addr"] ?? "N/A")")
-                        // Text("Type: \(attributes["Type"] ?? "N/A")")
+                            Text("\(attributes["PlaceName"] ?? "N/A")")
+                            Text("Address: \(attributes["Place_addr"] ?? "N/A")")
+                            // Text("Type: \(attributes["Type"] ?? "N/A")")
 
                     } else {
-                        Text("Unknown Address")
+                            Text("Unknown Address")
                             .padding()
+                    }
+                    Button(action: {
+                        if let point = placement.geoElement?.geometry as? Point {
+                            tripLocations.append((x: point.x, y: point.y))
+                            print("Added to Trip: (\(point.x), \(point.y))")
+                        }
+                    }) {
+                        Text("Add to My Trip")
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
                     }
                 }
                 .padding()
