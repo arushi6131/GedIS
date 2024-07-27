@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5F77CC72C549338003A2A43 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F77CC62C549338003A2A43 /* AuthViewModel.swift */; };
 		F57EE2932C5491260015A482 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EE2922C5491260015A482 /* HeaderView.swift */; };
 		F58AF2AA2C5455D300B9881C /* TourisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2A92C5455D300B9881C /* TourisApp.swift */; };
 		F58AF2AC2C5455D300B9881C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2AB2C5455D300B9881C /* ContentView.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E5F77CC62C549338003A2A43 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F57EE2922C5491260015A482 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F58AF2A62C5455D300B9881C /* Touris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Touris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58AF2A92C5455D300B9881C /* TourisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourisApp.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				F58AF2D82C5478C500B9881C /* MyTripView.swift */,
 				F58AF2DA2C5478FA00B9881C /* ExploreView.swift */,
 				F57EE2922C5491260015A482 /* HeaderView.swift */,
+				E5F77CC62C549338003A2A43 /* AuthViewModel.swift */,
 			);
 			path = Touris;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				F58AF2AC2C5455D300B9881C /* ContentView.swift in Sources */,
 				F58AF2D52C54786E00B9881C /* FeedView.swift in Sources */,
 				F58AF2AA2C5455D300B9881C /* TourisApp.swift in Sources */,
+				E5F77CC72C549338003A2A43 /* AuthViewModel.swift in Sources */,
 				F58AF2DB2C5478FA00B9881C /* ExploreView.swift in Sources */,
 				F58AF2D92C5478C500B9881C /* MyTripView.swift in Sources */,
 				F57EE2932C5491260015A482 /* HeaderView.swift in Sources */,
