@@ -71,11 +71,10 @@ struct ExploreView: View {
             .callout(placement: $calloutPlacement.animation()) { placement in
                 VStack {
                     if let attributes = placement.geoElement?.attributes {
-                        Text("X: \(attributes["X"] ?? "N/A")")
-                        Text("Y: \(attributes["Y"] ?? "N/A")")
-                        Text("Type: \(attributes["Type"] ?? "N/A")")
-                        Text("Place Address: \(attributes["Place_addr"] ?? "N/A")")
-                        Text("Place Name: \(attributes["PlaceName"] ?? "N/A")")
+                        Text("\(attributes["PlaceName"] ?? "N/A")")
+                        Text("Address: \(attributes["Place_addr"] ?? "N/A")")
+                        // Text("Type: \(attributes["Type"] ?? "N/A")")
+
                     } else {
                         Text("Unknown Address")
                             .padding()
