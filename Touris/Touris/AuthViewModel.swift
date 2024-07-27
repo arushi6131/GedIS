@@ -26,12 +26,15 @@ class AuthViewModel: ObservableObject {
         }
     }
     func createAccount(email: String, password: String) {
-        // Reset error message
-        errorMessage = ""
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                self.errorMessage = error.localizedDescription
+            // Reset error message
+            errorMessage = ""
+            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                if let error = error {
+                    self.errorMessage = error.localizedDescription
+                } else {
+                    // Sign in the user after successful account creation
+                    self.signIn(email: email, password: password)
+                }
             }
         }
     }
-}
