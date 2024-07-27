@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct HeaderView: View {
+    @State private var isProfileViewPresented = false
+
     var body: some View {
         HStack {
             Text("Touris")
@@ -17,8 +19,7 @@ struct HeaderView: View {
                 .padding()
             Spacer() // Push the profile button to the right
             Button(action: {
-                // Action for the profile button
-                print("Profile tapped")
+                isProfileViewPresented.toggle()
             }) {
                 Image(systemName: "person.crop.circle")
                     .font(.title)
@@ -27,5 +28,9 @@ struct HeaderView: View {
         }
         .background(Color.white) // Set a background color for the header
         .shadow(radius: 2) // Add a shadow for a slight elevation effect
+        .sheet(isPresented: $isProfileViewPresented) {
+            ProfileView()
+        }
     }
 }
+
