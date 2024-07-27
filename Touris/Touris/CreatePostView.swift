@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-struct CreatPostView: View {
+struct CreatePostView: View {
     var body: some View {
         Color.blue
     }

@@ -35,7 +35,7 @@ struct MainView: View {
                         Image(systemName: "map")
                         Text("Feed")
                     }
-                CreatPostView()
+                CreatePostView()
                     .tabItem {
                         Image(systemName: "plus.app")
                         Text("Create Post")
