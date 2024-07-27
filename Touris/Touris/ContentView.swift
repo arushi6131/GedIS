@@ -1,13 +1,31 @@
-//
-//  ContentView.swift
-//  Touris
-//
-//  Created by Arushi Goyal on 7/26/24.
-//
+import SwiftUI
+import FirebaseAuth
+
+struct ContentView: View {
+    @ObservedObject var authViewModel = AuthViewModel()
+    
+    var body: some View {
+        Group {
+            if authViewModel.isSignedIn {
+                MainView()
+            } else {
+                SignInView(authViewModel: authViewModel)
+            }
+        }
+        .onAppear {
+            authViewModel.currentUserID = Auth.auth().currentUser?.uid
+            authViewModel.isSignedIn = authViewModel.currentUserID != nil
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     var body: some View {
         VStack(spacing: 0) {
             HeaderView() // Include the header at the top
@@ -38,5 +56,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    MainView()
 }
