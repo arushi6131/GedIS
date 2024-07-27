@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6FFD1D092C54A72D00B89848 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD1D082C54A72D00B89848 /* SignInView.swift */; };
 		6FFD1D0B2C54A75900B89848 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD1D0A2C54A75900B89848 /* CreateAccountView.swift */; };
+		6FFD1D152C5558FC00B89848 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD1D142C5558FC00B89848 /* ImagePicker.swift */; };
 		E5F77CC72C549338003A2A43 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F77CC62C549338003A2A43 /* AuthViewModel.swift */; };
 		E5F77D032C549524003A2A43 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E5F77D022C549524003A2A43 /* FirebaseAnalytics */; };
 		E5F77D052C549524003A2A43 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = E5F77D042C549524003A2A43 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -75,6 +76,7 @@
 /* Begin PBXFileReference section */
 		6FFD1D082C54A72D00B89848 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		6FFD1D0A2C54A75900B89848 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		6FFD1D142C5558FC00B89848 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E5F77CC62C549338003A2A43 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F57EE2922C5491260015A482 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F57EE30E2C554D290015A482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				6FFD1D082C54A72D00B89848 /* SignInView.swift */,
 				6FFD1D0A2C54A75900B89848 /* CreateAccountView.swift */,
 				F57EE3102C5554910015A482 /* CardDetailView.swift */,
+				6FFD1D142C5558FC00B89848 /* ImagePicker.swift */,
 			);
 			path = Touris;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				E5F77CC72C549338003A2A43 /* AuthViewModel.swift in Sources */,
 				F57EE3112C5554910015A482 /* CardDetailView.swift in Sources */,
 				F58AF2DB2C5478FA00B9881C /* ExploreView.swift in Sources */,
+				6FFD1D152C5558FC00B89848 /* ImagePicker.swift in Sources */,
 				F58AF2D92C5478C500B9881C /* MyTripView.swift in Sources */,
 				F57EE2932C5491260015A482 /* HeaderView.swift in Sources */,
 			);
