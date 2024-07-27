@@ -3,7 +3,7 @@ import SwiftUI
 struct CardView: View {
     var title: String
     var description: String
-    var images: [UIImage] // Array of images
+    var images: [UIImage]
 
     var body: some View {
         VStack(spacing: 10) {
@@ -14,7 +14,7 @@ struct CardView: View {
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 200, height: 150) // Set appropriate width and height
+                            .frame(width: 200, height: 150)
                             .clipped()
                             .cornerRadius(10)
                             .padding(.top)
@@ -25,43 +25,42 @@ struct CardView: View {
 
             // Description with Profile Picture
             HStack(alignment: .top) {
-                Image("profile_picture") // Replace with your profile picture image name
+                Image("profile_picture")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 40, height: 40) // Size of the profile picture
-                    .clipShape(Circle()) // Make it circular
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
 
                 Text(description)
                     .font(.subheadline)
                     .padding(.bottom)
-                    .padding([.leading], 10) // Add some padding to the left of the description
+                    .padding([.leading], 10)
             }
-            .padding([.leading, .trailing]) // Add padding to the HStack
+            .padding([.leading, .trailing])
         }
-        .frame(maxWidth: 350) // Set a maximum width for the cards
-        .background(Color.white) // Card background
-        .cornerRadius(10) // Card corner radius
-        .shadow(radius: 5) // Card shadow
+        .frame(maxWidth: 350)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(radius: 5)
         .padding(.horizontal)
     }
 }
 
-
 struct FeedView: View {
-    @ObservedObject var authViewModel = AuthViewModel()
-    @State private var allItineraries: [Itinerary] = []
-    @State private var imagesDict: [String: [UIImage]] = [:]
+    @State private var allItineraries: [Itinerary] = [
+        Itinerary(id: 1, name: "Hollywood", description: "An exciting trip to Hollywood!", locations: [Location(name: "Nobu", description: "Peruvian Japanese food!", photos: ["Nobu1"], x: -118.383736, y: 34.052235), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743)]),
+        Itinerary(id: 2, name: "Beverly Hills", description: "Beversly Hills Shopping", locations: [Location(name: "N", description: "Peruvian Japanese food!", photos: ["Nobu1"], x: -118.383736, y: 34.052235), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743)])
+    ]
+    @State private var imagesDict: [Int: [UIImage]] = [:]
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
                     ForEach(allItineraries) { itinerary in
-                        ForEach(itinerary.locations) { location in
-                            if let images = imagesDict[location.name] {
-                                NavigationLink(destination: CardDetailView(title: location.name)) {
-                                    CardView(title: location.name, description: location.description, images: images)
-                                }
+                        if let images = imagesDict[itinerary.id] {
+                            NavigationLink(destination: CardDetailView(itinerary: itinerary)) {
+                                CardView(title: itinerary.name, description: itinerary.description, images: images)
                             }
                         }
                     }
@@ -69,55 +68,44 @@ struct FeedView: View {
                 .padding()
             }
             .onAppear {
-                authViewModel.getItineraries { result in
-                    switch result {
-                    case .success(let itineraries):
-                        self.allItineraries = itineraries
-                        loadImages(for: itineraries)
-                    case .failure(let error):
-                        print("Failed to fetch itineraries: \(error.localizedDescription)")
-                    }
-                }
+                loadImages(for: allItineraries)
             }
         }
     }
 
     private func loadImages(for itineraries: [Itinerary]) {
-        var newImagesDict = [String: [UIImage]]()
-
-        let dispatchGroup = DispatchGroup()
+        var newImagesDict = [Int: [UIImage]]()
 
         for itinerary in itineraries {
+            var images: [UIImage] = []
             for location in itinerary.locations {
-                dispatchGroup.enter()
-                var images: [UIImage] = []
-
-                let locationDispatchGroup = DispatchGroup()
-
-                for photoURL in location.photos {
-                    locationDispatchGroup.enter()
-                    authViewModel.fetchImage(from: photoURL) { result in
-                        switch result {
-                        case .success(let image):
-                            images.append(image)
-                        case .failure(let error):
-                            print("Failed to load image: \(error.localizedDescription)")
-                        }
-                        locationDispatchGroup.leave()
+                for photoName in location.photos {
+                    if let image = UIImage(named: photoName) {
+                        images.append(image)
                     }
                 }
-
-                locationDispatchGroup.notify(queue: .main) {
-                    newImagesDict[location.name] = images
-                    dispatchGroup.leave()
-                }
             }
+            newImagesDict[itinerary.id] = images
         }
-
-        dispatchGroup.notify(queue: .main) {
-            self.imagesDict = newImagesDict
-        }
+        
+        self.imagesDict = newImagesDict
     }
+}
+
+struct Itinerary: Identifiable {
+    var id: Int
+    var name: String
+    var description: String
+    var locations: [Location]
+}
+
+struct Location: Identifiable {
+    var id = UUID()
+    var name: String
+    var description: String
+    var photos: [String]
+    var x: Double
+    var y: Double
 }
 
 struct FeedView_Previews: PreviewProvider {
@@ -125,3 +113,4 @@ struct FeedView_Previews: PreviewProvider {
         FeedView()
     }
 }
+

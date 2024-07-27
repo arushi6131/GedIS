@@ -1,12 +1,13 @@
 import SwiftUI
 
+
 struct CreatePostView: View {
     @State private var locationName = ""
     @State private var locationDescription = ""
     @State private var locationRating = ""
     @State private var selectedImages: [UIImage] = [] // Changed to an array for multiple images
     @State private var showImagePicker = false
-    @ObservedObject var authViewModel = AuthViewModel()
+    @State private var itineraries: [MyItinerary] = [] // Local storage for itineraries
     
     var body: some View {
         VStack {
@@ -48,6 +49,9 @@ struct CreatePostView: View {
                     .cornerRadius(10)
             }
             .padding()
+            .sheet(isPresented: $showImagePicker) {
+                ImagePicker(images: $selectedImages)
+            }
             
             Button(action: {
                 savePost()
@@ -74,44 +78,31 @@ struct CreatePostView: View {
             }
             .padding()
         }
-        .sheet(isPresented: $showImagePicker) {
-            ImagePicker(images: $selectedImages)
-        }
         .padding()
     }
     
     private func savePost() {
         guard !selectedImages.isEmpty else {
-            authViewModel.errorMessage = "Please select at least one image."
+            // Handle error
+            print("Please select at least one image.")
             return
         }
         
         guard let rating = Double(locationRating) else {
-            authViewModel.errorMessage = "Please enter a valid rating."
+            // Handle error
+            print("Please enter a valid rating.")
             return
         }
         
-        // Process each image
-        for image in selectedImages {
-            authViewModel.uploadPhoto(image: image) { result in
-                switch result {
-                case .success(let photoURL):
-                    let location = Location(id: UUID().uuidString, name: locationName, description: locationDescription, rating: rating, photos: [photoURL])
-                    let itinerary = Itinerary(id: UUID().uuidString, title: "New Itinerary", locations: [location])
-                    
-                    authViewModel.saveItinerary(itinerary: itinerary) { result in
-                        switch result {
-                        case .success():
-                            print("Post successfully saved!")
-                        case .failure(let error):
-                            authViewModel.errorMessage = "Error saving post: \(error.localizedDescription)"
-                        }
-                    }
-                case .failure(let error):
-                    authViewModel.errorMessage = "Error uploading photo: \(error.localizedDescription)"
-                }
-            }
-        }
+        // Create location and itinerary objects
+        let location = MyLocation(id: UUID().uuidString, name: locationName, description: locationDescription, rating: rating, photos: selectedImages)
+        let itinerary = MyItinerary(id: UUID().uuidString, title: "New Itinerary", locations: [location])
+        
+        // Save the itinerary to the local array
+        itineraries.append(itinerary)
+        
+        print("Post successfully saved!")
+        // Optionally, handle further processing or UI updates here
     }
     
     // Function to reset all fields
@@ -127,4 +118,19 @@ struct CreatePostView_Previews: PreviewProvider {
     static var previews: some View {
         CreatePostView()
     }
+}
+
+// Dummy models for MyLocation and MyItinerary
+struct MyLocation: Identifiable {
+    var id: String
+    var name: String
+    var description: String
+    var rating: Double
+    var photos: [UIImage]
+}
+
+struct MyItinerary: Identifiable {
+    var id: String
+    var title: String
+    var locations: [MyLocation]
 }

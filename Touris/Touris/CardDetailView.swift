@@ -1,55 +1,109 @@
-//
-//  CardDetailView.swift
-//  Touris
-//
-//  Created by Arushi Goyal on 7/27/24.
-//
-
-import Foundation
 import SwiftUI
+import ArcGIS
 
-// New view to show details of the selected card
 struct CardDetailView: View {
-    var title: String
+    var itinerary: Itinerary
+
+    @State private var isExpanded: Bool = false
 
     var body: some View {
-        ZStack {
-            VStack {
-                // Main content at the top
-                Text(title)
-                    .font(.largeTitle)
-                    .foregroundColor(.white) // Adjust color for better visibility
-                    .padding()
-                Text("Details about \(title) will be displayed here.")
-                    .foregroundColor(.white) // Adjust color for better visibility
-                    .padding()
-                Spacer() // Push content to the top
+        ZStack(alignment: .bottom) {
+            // Map view with points added
+            MapViewContainer(itinerary: itinerary)
 
-                // Floating card at the bottom
+            // Pull-up menu
+            VStack(spacing: 0) {
+                Capsule()
+                    .frame(width: 40, height: 6)
+                    .padding(.top)
+                    .padding(.bottom, 8)
+
                 VStack {
-                    Text("More Info")
+                    Text(itinerary.name)
                         .font(.headline)
                         .padding()
-                        .frame(maxWidth: .infinity) // Make it stretch to the edges
-                        .background(Color.white) // Background color for the card
-                        .cornerRadius(10)
-                        .shadow(radius: 5) // Shadow for the floating effect
-                    Text("Additional details about \(title) can go here.")
+
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 10) {
+                            ForEach(itinerary.locations) { location in
+                                VStack(alignment: .leading) {
+                                    Text(location.name)
+                                        .font(.headline)
+                                    Text(location.description)
+                                        .font(.subheadline)
+                                }
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .shadow(radius: 5)
+                                .padding(.vertical, 5)
+                            }
+                        }
                         .padding()
+                    }
                 }
-                .padding()
-                .padding(.bottom, 20) // Add bottom padding to float above the bottom edge
+                .background(Color(.systemBackground))
+                .cornerRadius(20)
+                .shadow(radius: 20)
+                .frame(maxHeight: isExpanded ? .infinity : 300)
+                .animation(.spring())
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            if value.translation.height < 0 {
+                                isExpanded = true
+                            } else {
+                                isExpanded = false
+                            }
+                        }
+                )
             }
         }
-        .navigationTitle("Card Details") // Title for the navigation bar
-        .navigationBarTitleDisplayMode(.inline) // Inline title display mode
+        .edgesIgnoringSafeArea(.all)
+        .navigationTitle("Card Details")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct MapViewContainer: View {
+    var itinerary: Itinerary
+
+    @StateObject private var model = Model()
+
+    var body: some View {
+        MapView(
+            map: model.map,
+            graphicsOverlays: [model.graphicsOverlay]
+        )
+        .onAppear {
+            addPointsToMap()
+        }
+    }
+
+    private func addPointsToMap() {
+        for location in itinerary.locations {
+            let point = Point(x: location.x, y: location.y, spatialReference: .wgs84)
+            let graphic = Graphic(geometry: point)
+            model.graphicsOverlay.addGraphic(graphic)
+        }
+    }
+}
+
+private extension MapViewContainer {
+    class Model: ObservableObject {
+        let map: Map
+        let graphicsOverlay = GraphicsOverlay()
+
+        init() {
+            let url = URL(string: "https://www.arcgis.com/apps/mapviewer/index.html?webmap=0dd3259879ab43e79a9f878e2febf1a2")!
+            self.map = Map(url: url)!
+        }
     }
 }
 
 struct CardDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CardDetailView(title: "Sample Card")
+        CardDetailView(itinerary: Itinerary(id: 1, name: "Sample Itinerary", description: "Sample description", locations: [Location(name: "Sample Location", description: "Sample description", photos: ["sample_photo"], x: -118.352918, y: 34.137743)]))
     }
 }
-
 
