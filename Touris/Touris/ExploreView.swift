@@ -2,7 +2,6 @@ import SwiftUI
 import ArcGIS
 import ArcGISToolkit
 
-
 struct ExploreView: View {
     /// The viewpoint used by the search view to pan/zoom the map to the extent
     /// of the search results.
@@ -44,6 +43,10 @@ struct ExploreView: View {
 
     /// The view model for the sample.
     @StateObject private var model = Model()
+    
+    /// Variables to store x and y coordinates.
+    @State private var xCoordinate: Double = 0.0
+    @State private var yCoordinate: Double = 0.0
 
     var body: some View {
         MapViewReader { proxy in
@@ -66,10 +69,19 @@ struct ExploreView: View {
                 geoViewExtent = newVisibleArea.extent
             }
             .callout(placement: $calloutPlacement.animation()) { placement in
-                // Show the address of user tapped location graphic.
-                // To get the fully geocoded address, use "Place_addr".
-                Text(placement.geoElement?.attributes["Match_addr"] as? String ?? "Unknown Address")
-                    .padding()
+                VStack {
+                    if let attributes = placement.geoElement?.attributes {
+                        Text("X: \(attributes["X"] ?? "N/A")")
+                        Text("Y: \(attributes["Y"] ?? "N/A")")
+                        Text("Type: \(attributes["Type"] ?? "N/A")")
+                        Text("Place Address: \(attributes["Place_addr"] ?? "N/A")")
+                        Text("Place Name: \(attributes["PlaceName"] ?? "N/A")")
+                    } else {
+                        Text("Unknown Address")
+                            .padding()
+                    }
+                }
+                .padding()
             }
             .task(id: identifyScreenPoint) {
                 guard let screenPoint = identifyScreenPoint,
@@ -84,7 +96,13 @@ struct ExploreView: View {
                 }
                 // Creates a callout placement at the user tapped location.
                 calloutPlacement = identifyResult.graphics.first.flatMap { graphic in
-                    CalloutPlacement.geoElement(graphic, tapLocation: identifyTapLocation)
+                    // Extract coordinates and update the variables.
+                    if let point = graphic.geometry as? Point {
+                        xCoordinate = point.x
+                        yCoordinate = point.y
+                        print("X Coordinate: \(xCoordinate), Y Coordinate: \(yCoordinate)")
+                    }
+                    return CalloutPlacement.geoElement(graphic, tapLocation: identifyTapLocation)
                 }
                 identifyScreenPoint = nil
                 identifyTapLocation = nil
@@ -110,7 +128,6 @@ struct ExploreView: View {
     }
 }
 
-
 private extension ExploreView {
     class Model: ObservableObject {
         /// A map initialized from a URL.
@@ -127,4 +144,3 @@ private extension ExploreView {
         }
     }
 }
-
