@@ -1,43 +1,50 @@
-//
-//  ImagePicker.swift
-//  Touris
-//
-//  Created by Jaysen Gomez on 7/27/24.
-//
-
 import SwiftUI
 import UIKit
+import PhotosUI // Import PhotosUI for PHPickerViewController
 
 struct ImagePicker: UIViewControllerRepresentable {
-    @Binding var image: UIImage?
-    
+    @Binding var images: [UIImage] // Array of selected images
+    @Environment(\.presentationMode) var presentationMode // To dismiss the picker
+
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
-        let picker = UIImagePickerController()
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> PHPickerViewController {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 0 // 0 means unlimited selection
+        configuration.filter = .images // Only allow images
+        
+        let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = context.coordinator
         return picker
     }
     
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {}
+    func updateUIViewController(_ uiViewController: PHPickerViewController, context: UIViewControllerRepresentableContext<ImagePicker>) {}
     
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    class Coordinator: NSObject, PHPickerViewControllerDelegate {
         let parent: ImagePicker
         
         init(_ parent: ImagePicker) {
             self.parent = parent
         }
         
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let uiImage = info[.originalImage] as? UIImage {
-                parent.image = uiImage
+        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            for result in results {
+                // Check if the result is an image
+                if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
+                    result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                        if let uiImage = image as? UIImage {
+                            DispatchQueue.main.async {
+                                self.parent.images.append(uiImage) // Append the selected image
+                            }
+                        }
+                    }
+                }
             }
-            
-            picker.dismiss(animated: true)
+            picker.dismiss(animated: true) {
+                self.parent.presentationMode.wrappedValue.dismiss() // Dismiss the picker
+            }
         }
     }
 }
-
-

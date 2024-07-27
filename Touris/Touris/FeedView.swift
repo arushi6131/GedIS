@@ -1,11 +1,9 @@
 import SwiftUI
 
-
-
 struct CardView: View {
     var title: String
     var description: String
-    var images: [UIImage]
+    var images: [UIImage] // Array of images
 
     var body: some View {
         VStack(spacing: 10) {
@@ -47,6 +45,7 @@ struct CardView: View {
         .padding(.horizontal)
     }
 }
+
 
 struct FeedView: View {
     @ObservedObject var authViewModel = AuthViewModel()
