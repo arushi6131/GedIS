@@ -20,6 +20,7 @@ struct CardView: View {
                 .cornerRadius(10)
                 .shadow(radius: 5)
         }
+        .frame(maxWidth: 350) // Set a maximum width for the cards
         .padding(.horizontal)
     }
 }
@@ -34,7 +35,7 @@ struct FeedView: View {
             }
             .padding()
         }
-        .background(Color.red)
+        .background()
         .edgesIgnoringSafeArea(.all)
     }
 }
