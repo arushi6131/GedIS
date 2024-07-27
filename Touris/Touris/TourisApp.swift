@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import ArcGIS
+import ArcGISToolkit
 
 @main
 struct TourisApp: App {
-    var body: some Scene {
+    
+    init() {
+        ArcGISEnvironment.apiKey = APIKey("AAPKfef7d1470143483bb582cd743db8bd98zPxkBR_WSA-MNtN1QDcuUQBYnk8qiLfSwNCh4ZPY_Ex87-DyXOVDDDeumrLYTQMl")
+    }
+    
+    var body: some SwiftUI.Scene {
         WindowGroup {
             ContentView()
         }
