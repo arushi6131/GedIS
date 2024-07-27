@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct CardView: View {
     var title: String
     var description: String
@@ -49,7 +50,7 @@ struct CardView: View {
 struct FeedView: View {
     @State private var allItineraries: [Itinerary] = [
         Itinerary(id: 1, name: "Hollywood", description: "An exciting trip to Hollywood!", locations: [Location(name: "Nobu", description: "Peruvian Japanese food!", photos: ["Nobu1"], x: -118.383736, y: 34.052235), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743)]),
-        Itinerary(id: 2, name: "Beverly Hills", description: "Beversly Hills Shopping", locations: [Location(name: "N", description: "Peruvian Japanese food!", photos: ["Nobu1"], x: -118.383736, y: 34.052235), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743)])
+        Itinerary(id: 2, name: "Beverly Hills", description: "Beverly Hills Shopping", locations: [Location(name: "Nobu", description: "Peruvian Japanese food!", photos: ["Nobu1"], x: -118.383736, y: 34.052235), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743)])
     ]
     @State private var imagesDict: [Int: [UIImage]] = [:]
 
@@ -113,4 +114,3 @@ struct FeedView_Previews: PreviewProvider {
         FeedView()
     }
 }
-
