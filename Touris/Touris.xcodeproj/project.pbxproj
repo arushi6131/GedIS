@@ -235,7 +235,11 @@
 			);
 			mainGroup = F58AF29D2C5455D300B9881C;
 			packageReferences = (
+<<<<<<< Updated upstream
 				E5F77C842C547B5E003A2A43 /* XCRemoteSwiftPackageReference "arcgis-maps-sdk-swift-toolkit" */,
+=======
+				E5F77C832C547965003A2A43 /* XCRemoteSwiftPackageReference "arcgis-maps-sdk-swift-toolkit" */,
+>>>>>>> Stashed changes
 			);
 			productRefGroup = F58AF2A72C5455D300B9881C /* Products */;
 			projectDirPath = "";
@@ -635,7 +639,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+<<<<<<< Updated upstream
 		E5F77C842C547B5E003A2A43 /* XCRemoteSwiftPackageReference "arcgis-maps-sdk-swift-toolkit" */ = {
+=======
+		E5F77C832C547965003A2A43 /* XCRemoteSwiftPackageReference "arcgis-maps-sdk-swift-toolkit" */ = {
+>>>>>>> Stashed changes
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Esri/arcgis-maps-sdk-swift-toolkit";
 			requirement = {
@@ -644,6 +652,7 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+<<<<<<< Updated upstream
 
 /* Begin XCSwiftPackageProductDependency section */
 		E5F77C852C547D72003A2A43 /* ArcGISToolkit */ = {
@@ -652,6 +661,8 @@
 			productName = ArcGISToolkit;
 		};
 /* End XCSwiftPackageProductDependency section */
+=======
+>>>>>>> Stashed changes
 	};
 	rootObject = F58AF29E2C5455D300B9881C /* Project object */;
 }
