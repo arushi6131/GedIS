@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HeaderView: View {
     @State private var isProfileViewPresented = false
+    @State private var profileImage: UIImage? = UIImage(named: "profile_picture") // Add your image name here
 
     var body: some View {
         HStack {
@@ -21,9 +22,19 @@ struct HeaderView: View {
             Button(action: {
                 isProfileViewPresented.toggle()
             }) {
-                Image(systemName: "person.crop.circle")
-                    .font(.title)
-                    .padding()
+                if let profileImage = profileImage {
+                    Image("Arno")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 40, height: 40) // Set the size of the profile picture
+                        .clipShape(Circle()) // Make the image circular
+                        .overlay(Circle().stroke(Color.white, lineWidth: 2)) // Optional border
+                        .shadow(radius: 2) // Optional shadow
+                } else {
+                    Image(systemName: "person.crop.circle")
+                        .font(.title)
+                        .padding()
+                }
             }
         }
         .background(Color.white) // Set a background color for the header
@@ -33,4 +44,3 @@ struct HeaderView: View {
         }
     }
 }
-

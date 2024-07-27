@@ -23,10 +23,14 @@ struct ProfileView: View {
             .padding(.top, 20)
             
             HStack {
-                Image(systemName: "person.crop.circle.fill")
+                Image("Arno")
                     .resizable()
-                    .frame(width: 100, height: 100)
-                    .padding(.leading, 20)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 200, height: 200)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                    .shadow(radius: 10)
+                    .padding(.horizontal, 20)
                 
                 VStack(alignment: .leading) {
                     Text("Arno Abrahamian")
