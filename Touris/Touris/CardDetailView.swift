@@ -83,7 +83,7 @@ struct MapViewContainer: View {
     private func addPointsToMap() {
         for location in itinerary.locations {
             let point = Point(x: location.x, y: location.y, spatialReference: .wgs84)
-            let graphic = Graphic(geometry: point)
+            let graphic = model.makeStopGraphic(at: point)
             model.graphicsOverlay.addGraphic(graphic)
         }
     }
@@ -97,6 +97,12 @@ private extension MapViewContainer {
         init() {
             let url = URL(string: "https://www.arcgis.com/apps/mapviewer/index.html?webmap=0dd3259879ab43e79a9f878e2febf1a2")!
             self.map = Map(url: url)!
+        }
+
+        func makeStopGraphic(at point: Point) -> Graphic {
+            let symbol = SimpleMarkerSymbol(style: .circle, color: .white, size: 12)
+            symbol.outline = SimpleLineSymbol(style: .solid, color: .black, width: 2)
+            return Graphic(geometry: point, symbol: symbol)
         }
     }
 }
