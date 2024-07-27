@@ -1,6 +1,7 @@
 import SwiftUI
 
-// CardView structure to represent each card
+
+
 struct CardView: View {
     var title: String
     var description: String
@@ -47,7 +48,6 @@ struct CardView: View {
     }
 }
 
-// FeedView structure that contains a scrollable list of cards
 struct FeedView: View {
     @ObservedObject var authViewModel = AuthViewModel()
     @State private var allItineraries: [Itinerary] = []
@@ -57,8 +57,8 @@ struct FeedView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    ForEach(allItineraries, id: \.title) { itinerary in
-                        ForEach(itinerary.locations, id: \.name) { location in
+                    ForEach(allItineraries) { itinerary in
+                        ForEach(itinerary.locations) { location in
                             if let images = imagesDict[location.name] {
                                 NavigationLink(destination: CardDetailView(title: location.name)) {
                                     CardView(title: location.name, description: location.description, images: images)
@@ -84,13 +84,19 @@ struct FeedView: View {
     }
 
     private func loadImages(for itineraries: [Itinerary]) {
+        var newImagesDict = [String: [UIImage]]()
+
+        let dispatchGroup = DispatchGroup()
+
         for itinerary in itineraries {
             for location in itinerary.locations {
-                let group = DispatchGroup()
+                dispatchGroup.enter()
                 var images: [UIImage] = []
 
+                let locationDispatchGroup = DispatchGroup()
+
                 for photoURL in location.photos {
-                    group.enter()
+                    locationDispatchGroup.enter()
                     authViewModel.fetchImage(from: photoURL) { result in
                         switch result {
                         case .success(let image):
@@ -98,14 +104,19 @@ struct FeedView: View {
                         case .failure(let error):
                             print("Failed to load image: \(error.localizedDescription)")
                         }
-                        group.leave()
+                        locationDispatchGroup.leave()
                     }
                 }
 
-                group.notify(queue: .main) {
-                    self.imagesDict[location.name] = images
+                locationDispatchGroup.notify(queue: .main) {
+                    newImagesDict[location.name] = images
+                    dispatchGroup.leave()
                 }
             }
+        }
+
+        dispatchGroup.notify(queue: .main) {
+            self.imagesDict = newImagesDict
         }
     }
 }
@@ -115,4 +126,3 @@ struct FeedView_Previews: PreviewProvider {
         FeedView()
     }
 }
-

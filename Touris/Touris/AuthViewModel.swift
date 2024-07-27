@@ -5,14 +5,16 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 import SwiftUI
 
-struct Location: Codable {
+struct Location: Identifiable, Codable {
+    var id: String = UUID().uuidString // Add a unique identifier
     var name: String
     var description: String
     var rating: Double
     var photos: [String] // URLs to photos
 }
 
-struct Itinerary: Codable {
+struct Itinerary: Identifiable, Codable {
+    var id: String = UUID().uuidString // Add a unique identifier
     var title: String
     var locations: [Location]
 }
@@ -158,4 +160,3 @@ class AuthViewModel: ObservableObject {
         }
     }
 }
-
