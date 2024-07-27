@@ -75,8 +75,8 @@ struct CreatePostView: View {
         authViewModel.uploadPhoto(image: image) { result in
             switch result {
             case .success(let photoURL):
-                let location = Location(name: locationName, description: locationDescription, rating: rating, photos: [photoURL])
-                let itinerary = Itinerary(title: "New Itinerary", locations: [location])
+                let location = Location(id: UUID().uuidString, name: locationName, description: locationDescription, rating: rating, photos: [photoURL])
+                let itinerary = Itinerary(id: UUID().uuidString, title: "New Itinerary", locations: [location])
                 
                 authViewModel.saveItinerary(itinerary: itinerary) { result in
                     switch result {
@@ -98,6 +98,4 @@ struct CreatePostView_Previews: PreviewProvider {
         CreatePostView()
     }
 }
-
-
 
