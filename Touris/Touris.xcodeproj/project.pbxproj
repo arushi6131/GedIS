@@ -42,7 +42,7 @@
 		E5F77D402C54CC59003A2A43 /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = E5F77D3F2C54CC59003A2A43 /* ArcGISToolkit */; };
 		F57EE2932C5491260015A482 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EE2922C5491260015A482 /* HeaderView.swift */; };
 		F57EE3112C5554910015A482 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EE3102C5554910015A482 /* CardDetailView.swift */; };
-		F57EE3132C555B0A0015A482 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F57EE3122C555B0A0015A482 /* GoogleService-Info.plist */; };
+		F57EE3152C55A0230015A482 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F57EE3142C55A0230015A482 /* GoogleService-Info.plist */; };
 		F58AF2AA2C5455D300B9881C /* TourisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2A92C5455D300B9881C /* TourisApp.swift */; };
 		F58AF2AC2C5455D300B9881C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2AB2C5455D300B9881C /* ContentView.swift */; };
 		F58AF2AE2C5455D500B9881C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58AF2AD2C5455D500B9881C /* Assets.xcassets */; };
@@ -80,7 +80,7 @@
 		E5F77CC62C549338003A2A43 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F57EE2922C5491260015A482 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F57EE3102C5554910015A482 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
-		F57EE3122C555B0A0015A482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F57EE3142C55A0230015A482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F58AF2A62C5455D300B9881C /* Touris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Touris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58AF2A92C5455D300B9881C /* TourisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourisApp.swift; sourceTree = "<group>"; };
 		F58AF2AB2C5455D300B9881C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		F58AF2A82C5455D300B9881C /* Touris */ = {
 			isa = PBXGroup;
 			children = (
-				F57EE3122C555B0A0015A482 /* GoogleService-Info.plist */,
+				F57EE3142C55A0230015A482 /* GoogleService-Info.plist */,
 				F58AF2A92C5455D300B9881C /* TourisApp.swift */,
 				F58AF2AB2C5455D300B9881C /* ContentView.swift */,
 				F58AF2AD2C5455D500B9881C /* Assets.xcassets */,
@@ -361,7 +361,7 @@
 			files = (
 				F58AF2B22C5455D500B9881C /* Preview Assets.xcassets in Resources */,
 				F58AF2AE2C5455D500B9881C /* Assets.xcassets in Resources */,
-				F57EE3132C555B0A0015A482 /* GoogleService-Info.plist in Resources */,
+				F57EE3152C55A0230015A482 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
