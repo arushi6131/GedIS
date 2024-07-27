@@ -6,10 +6,12 @@ struct CardDetailView: View {
 
     @State private var isExpanded: Bool = false
 
+    @StateObject private var model = Model()
+
     var body: some View {
         ZStack(alignment: .bottom) {
             // Map view with points added
-            MapViewContainer(itinerary: itinerary)
+            MapViewContainer(itinerary: itinerary, model: model)
 
             // Pull-up menu
             VStack(spacing: 0) {
@@ -31,12 +33,30 @@ struct CardDetailView: View {
                                         .font(.headline)
                                     Text(location.description)
                                         .font(.subheadline)
+                                    ScrollView(.horizontal, showsIndicators: false) {
+                                        HStack(spacing: 10) {
+                                            ForEach(location.photos, id: \.self) { photoName in
+                                                if let image = UIImage(named: photoName) {
+                                                    Image(uiImage: image)
+                                                        .resizable()
+                                                        .scaledToFill()
+                                                        .frame(width: 100, height: 100)
+                                                        .clipped()
+                                                        .cornerRadius(10)
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .padding(.vertical, 10)
                                 }
                                 .padding()
                                 .background(Color.white)
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
                                 .padding(.vertical, 5)
+                                .onTapGesture {
+                                    model.zoomTo(location: location)
+                                }
                             }
                         }
                         .padding()
@@ -46,6 +66,7 @@ struct CardDetailView: View {
                 .cornerRadius(20)
                 .shadow(radius: 20)
                 .frame(maxHeight: isExpanded ? .infinity : 300)
+                .frame(maxWidth: .infinity)  // Ensure it covers the entire width
                 .animation(.spring())
                 .gesture(
                     DragGesture()
@@ -67,16 +88,15 @@ struct CardDetailView: View {
 
 struct MapViewContainer: View {
     var itinerary: Itinerary
-
-    @StateObject private var model = Model()
+    @ObservedObject var model: Model
 
     var body: some View {
-        MapView(
-            map: model.map,
-            graphicsOverlays: [model.graphicsOverlay]
-        )
-        .onAppear {
-            addPointsToMap()
+        MapViewReader { mapViewProxy in
+            MapView(map: model.map, graphicsOverlays: [model.graphicsOverlay])
+                .onAppear {
+                    model.mapViewProxy = mapViewProxy
+                    addPointsToMap()
+                }
         }
     }
 
@@ -89,23 +109,32 @@ struct MapViewContainer: View {
     }
 }
 
-private extension MapViewContainer {
-    class Model: ObservableObject {
-        let map: Map
-        let graphicsOverlay = GraphicsOverlay()
+public class Model: ObservableObject {
+    let map: Map
+    let graphicsOverlay = GraphicsOverlay()
+    @Published var mapViewProxy: MapViewProxy?
 
-        init() {
-            let url = URL(string: "https://www.arcgis.com/apps/mapviewer/index.html?webmap=0dd3259879ab43e79a9f878e2febf1a2")!
-            self.map = Map(url: url)!
-        }
+    init() {
+        let url = URL(string: "https://www.arcgis.com/apps/mapviewer/index.html?webmap=0dd3259879ab43e79a9f878e2febf1a2")!
+        self.map = Map(url: url)!
+    }
 
-        func makeStopGraphic(at point: Point) -> Graphic {
-            let symbol = SimpleMarkerSymbol(style: .circle, color: .white, size: 12)
-            symbol.outline = SimpleLineSymbol(style: .solid, color: .black, width: 2)
-            return Graphic(geometry: point, symbol: symbol)
+    func makeStopGraphic(at point: Point) -> Graphic {
+        let symbol = SimpleMarkerSymbol(style: .circle, color: .white, size: 12)
+        symbol.outline = SimpleLineSymbol(style: .solid, color: .black, width: 2)
+        return Graphic(geometry: point, symbol: symbol)
+    }
+
+    func zoomTo(location: Location) {
+        guard let mapViewProxy = mapViewProxy else { return }
+        let point = Point(x: location.x, y: location.y, spatialReference: .wgs84)
+        let viewpoint = Viewpoint(center: point, scale: 10000)
+        Task {
+            await mapViewProxy.setViewpoint(viewpoint)
         }
     }
 }
+
 
 struct CardDetailView_Previews: PreviewProvider {
     static var previews: some View {
