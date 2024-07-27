@@ -41,6 +41,7 @@
 		E5F77D402C54CC59003A2A43 /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = E5F77D3F2C54CC59003A2A43 /* ArcGISToolkit */; };
 		F57EE2932C5491260015A482 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EE2922C5491260015A482 /* HeaderView.swift */; };
 		F57EE30F2C554D290015A482 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F57EE30E2C554D290015A482 /* GoogleService-Info.plist */; };
+		F57EE3112C5554910015A482 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EE3102C5554910015A482 /* CardDetailView.swift */; };
 		F58AF2AA2C5455D300B9881C /* TourisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2A92C5455D300B9881C /* TourisApp.swift */; };
 		F58AF2AC2C5455D300B9881C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2AB2C5455D300B9881C /* ContentView.swift */; };
 		F58AF2AE2C5455D500B9881C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58AF2AD2C5455D500B9881C /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		E5F77CC62C549338003A2A43 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F57EE2922C5491260015A482 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F57EE30E2C554D290015A482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F57EE3102C5554910015A482 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		F58AF2A62C5455D300B9881C /* Touris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Touris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58AF2A92C5455D300B9881C /* TourisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourisApp.swift; sourceTree = "<group>"; };
 		F58AF2AB2C5455D300B9881C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				E5F77CC62C549338003A2A43 /* AuthViewModel.swift */,
 				6FFD1D082C54A72D00B89848 /* SignInView.swift */,
 				6FFD1D0A2C54A75900B89848 /* CreateAccountView.swift */,
+				F57EE3102C5554910015A482 /* CardDetailView.swift */,
 			);
 			path = Touris;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				6FFD1D0B2C54A75900B89848 /* CreateAccountView.swift in Sources */,
 				F58AF2AA2C5455D300B9881C /* TourisApp.swift in Sources */,
 				E5F77CC72C549338003A2A43 /* AuthViewModel.swift in Sources */,
+				F57EE3112C5554910015A482 /* CardDetailView.swift in Sources */,
 				F58AF2DB2C5478FA00B9881C /* ExploreView.swift in Sources */,
 				F58AF2D92C5478C500B9881C /* MyTripView.swift in Sources */,
 				F57EE2932C5491260015A482 /* HeaderView.swift in Sources */,

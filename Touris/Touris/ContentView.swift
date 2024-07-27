@@ -32,23 +32,23 @@ struct MainView: View {
             TabView {
                 FeedView()
                     .tabItem {
-                        Image(systemName: "phone.fill")
+                        Image(systemName: "map")
                         Text("Feed")
                     }
                 CreatPostView()
                     .tabItem {
-                        Image(systemName: "tv.fill")
+                        Image(systemName: "plus.app")
                         Text("Create Post")
                     }
+            ExploreView()
+                .tabItem {
+                    Image(systemName: "mappin")
+                    Text("Explore")
+                }
                 MyTripView()
                     .tabItem {
-                        Image(systemName: "tv.fill")
+                        Image(systemName: "list.bullet")
                         Text("My Trip")
-                    }
-                ExploreView()
-                    .tabItem {
-                        Image(systemName: "tv.fill")
-                        Text("Explore")
                     }
             }
         }
