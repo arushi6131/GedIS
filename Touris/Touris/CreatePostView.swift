@@ -4,7 +4,7 @@ struct CreatePostView: View {
     @State private var locationName = ""
     @State private var locationDescription = ""
     @State private var locationRating = ""
-    @State private var selectedImage: UIImage? = nil
+    @State private var selectedImages: [UIImage] = [] // Changed to an array for multiple images
     @State private var showImagePicker = false
     @ObservedObject var authViewModel = AuthViewModel()
     
@@ -22,26 +22,32 @@ struct CreatePostView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
                 .keyboardType(.decimalPad)
-            
-            if let selectedImage = selectedImage {
-                Image(uiImage: selectedImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 200)
-                    .padding()
-            } else {
-                Button(action: {
-                    showImagePicker.toggle()
-                }) {
-                    Text("Select Photo")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+
+            // Display selected images
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(selectedImages, id: \.self) { image in
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 200)
+                            .padding(5)
+                            .cornerRadius(10)
+                    }
                 }
-                .padding()
             }
+            
+            Button(action: {
+                showImagePicker.toggle()
+            }) {
+                Text("Select Photos")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+            .padding()
             
             Button(action: {
                 savePost()
@@ -54,16 +60,29 @@ struct CreatePostView: View {
                     .cornerRadius(10)
             }
             .padding()
+            
+            // Reset button
+            Button(action: {
+                resetFields()
+            }) {
+                Text("Reset")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+            .padding()
         }
         .sheet(isPresented: $showImagePicker) {
-            ImagePicker(image: $selectedImage)
+            ImagePicker(images: $selectedImages)
         }
         .padding()
     }
     
     private func savePost() {
-        guard let image = selectedImage else {
-            authViewModel.errorMessage = "Please select an image."
+        guard !selectedImages.isEmpty else {
+            authViewModel.errorMessage = "Please select at least one image."
             return
         }
         
@@ -72,24 +91,35 @@ struct CreatePostView: View {
             return
         }
         
-        authViewModel.uploadPhoto(image: image) { result in
-            switch result {
-            case .success(let photoURL):
-                let location = Location(id: UUID().uuidString, name: locationName, description: locationDescription, rating: rating, photos: [photoURL])
-                let itinerary = Itinerary(id: UUID().uuidString, title: "New Itinerary", locations: [location])
-                
-                authViewModel.saveItinerary(itinerary: itinerary) { result in
-                    switch result {
-                    case .success():
-                        print("Post successfully saved!")
-                    case .failure(let error):
-                        authViewModel.errorMessage = "Error saving post: \(error.localizedDescription)"
+        // Process each image
+        for image in selectedImages {
+            authViewModel.uploadPhoto(image: image) { result in
+                switch result {
+                case .success(let photoURL):
+                    let location = Location(id: UUID().uuidString, name: locationName, description: locationDescription, rating: rating, photos: [photoURL])
+                    let itinerary = Itinerary(id: UUID().uuidString, title: "New Itinerary", locations: [location])
+                    
+                    authViewModel.saveItinerary(itinerary: itinerary) { result in
+                        switch result {
+                        case .success():
+                            print("Post successfully saved!")
+                        case .failure(let error):
+                            authViewModel.errorMessage = "Error saving post: \(error.localizedDescription)"
+                        }
                     }
+                case .failure(let error):
+                    authViewModel.errorMessage = "Error uploading photo: \(error.localizedDescription)"
                 }
-            case .failure(let error):
-                authViewModel.errorMessage = "Error uploading photo: \(error.localizedDescription)"
             }
         }
+    }
+    
+    // Function to reset all fields
+    private func resetFields() {
+        locationName = ""
+        locationDescription = ""
+        locationRating = ""
+        selectedImages = [] // Reset selected images
     }
 }
 
@@ -98,4 +128,3 @@ struct CreatePostView_Previews: PreviewProvider {
         CreatePostView()
     }
 }
-
