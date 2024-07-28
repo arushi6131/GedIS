@@ -39,9 +39,6 @@ struct TestLocation: Identifiable, Hashable {
 struct MyTripView: View {
     // State variable to hold locations
     @State private var locations: [TestLocation] = [
-        TestLocation(name: "Rodeo Drive"),
-            TestLocation(name: "Universal Studios"),
-            TestLocation(name: "Santa Monica Pier")
     ]
     
     @State private var showingCalendar: Bool = false // Track if calendar view should be shown
@@ -144,15 +141,6 @@ struct MyTripView: View {
     }
 
     private func addLocation(location: Location) {
-        addToTripLocations.append(
-            Location(name: "Rodeo Drive", description: "",  photos:[], x:0.0, y:0.0)
-        )
-        addToTripLocations.append(
-            Location(name: "Universal Studios", description: "",  photos:[], x:0.0, y:0.0)
-        )
-        addToTripLocations.append(
-            Location(name: "Santa Monica Pier", description: "",  photos:[], x:0.0, y:0.0)
-        )
         addToTripLocations.append(location)
         print("Added location: \(location.name)")
     }
