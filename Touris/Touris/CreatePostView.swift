@@ -13,6 +13,7 @@ struct CreatePostView: View {
     @State private var locationDescription = ""
     @State private var locationRating = ""
     @State private var selectedImages: [UIImage] = []
+    @State private var itineraryName = ""
     @State private var itineraryDescription = ""  // New state variable for itinerary description
     
     @StateObject private var locatorDataSource = LocatorSearchSource(
@@ -179,6 +180,9 @@ struct CreatePostView: View {
                     }
 
                     // New Itinerary Description Field
+                    TextField("Itinerary Name", text: $itineraryName)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
                     TextField("Itinerary Description", text: $itineraryDescription)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
@@ -301,7 +305,7 @@ struct CreatePostView: View {
     }
     
     private func shareItinerary() {
-        let newItinerary = Itinerary(id: postsViewModel.itineraries.count + 5, name: "New Itinerary", description: itineraryDescription, locations: selectedLocations)
+        let newItinerary = Itinerary(id: postsViewModel.itineraries.count + 5, name: itineraryName, description: itineraryDescription, locations: selectedLocations)
         postsViewModel.addItinerary(newItinerary)
         
         selectedLocations.removeAll()
