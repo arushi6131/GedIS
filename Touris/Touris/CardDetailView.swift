@@ -120,9 +120,19 @@ public class Model: ObservableObject {
     }
 
     func makeStopGraphic(at point: Point) -> Graphic {
-        let symbol = SimpleMarkerSymbol(style: .circle, color: .white, size: 12)
-        symbol.outline = SimpleLineSymbol(style: .solid, color: .black, width: 2)
-        return Graphic(geometry: point, symbol: symbol)
+        // Load the custom image from assets
+        guard let customImage = UIImage(named: "ToruisIcon2") else {
+            fatalError("Image not found in assets")
+        }
+        
+        // Create a PictureMarkerSymbol with the custom image
+        let pictureSymbol = PictureMarkerSymbol(image: customImage)
+        pictureSymbol.width = 24
+        pictureSymbol.height = 24
+        pictureSymbol.offsetY = 12  // Adjust offset if needed
+
+        // Create and return the graphic with the custom symbol
+        return Graphic(geometry: point, symbol: pictureSymbol)
     }
 
     func zoomTo(location: Location) {
