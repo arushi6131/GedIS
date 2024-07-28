@@ -10,6 +10,9 @@
 		6FFD1D092C54A72D00B89848 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD1D082C54A72D00B89848 /* SignInView.swift */; };
 		6FFD1D0B2C54A75900B89848 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD1D0A2C54A75900B89848 /* CreateAccountView.swift */; };
 		6FFD1D152C5558FC00B89848 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD1D142C5558FC00B89848 /* ImagePicker.swift */; };
+		E56FE4622C5600CC0010C7AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E56FE4612C5600CC0010C7AF /* GoogleService-Info.plist */; };
+		E56FE4642C56028A0010C7AF /* MyTripMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FE4632C56028A0010C7AF /* MyTripMap.swift */; };
+		E56FE4662C5602DA0010C7AF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FE4652C5602DA0010C7AF /* ProfileView.swift */; };
 		E5F77CC72C549338003A2A43 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F77CC62C549338003A2A43 /* AuthViewModel.swift */; };
 		E5F77D032C549524003A2A43 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E5F77D022C549524003A2A43 /* FirebaseAnalytics */; };
 		E5F77D052C549524003A2A43 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = E5F77D042C549524003A2A43 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -42,7 +45,6 @@
 		E5F77D402C54CC59003A2A43 /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = E5F77D3F2C54CC59003A2A43 /* ArcGISToolkit */; };
 		F57EE2932C5491260015A482 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EE2922C5491260015A482 /* HeaderView.swift */; };
 		F57EE3112C5554910015A482 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EE3102C5554910015A482 /* CardDetailView.swift */; };
-		F57EE3152C55A0230015A482 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F57EE3142C55A0230015A482 /* GoogleService-Info.plist */; };
 		F58AF2AA2C5455D300B9881C /* TourisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2A92C5455D300B9881C /* TourisApp.swift */; };
 		F58AF2AC2C5455D300B9881C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AF2AB2C5455D300B9881C /* ContentView.swift */; };
 		F58AF2AE2C5455D500B9881C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58AF2AD2C5455D500B9881C /* Assets.xcassets */; };
@@ -77,10 +79,12 @@
 		6FFD1D082C54A72D00B89848 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		6FFD1D0A2C54A75900B89848 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		6FFD1D142C5558FC00B89848 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		E56FE4612C5600CC0010C7AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E56FE4632C56028A0010C7AF /* MyTripMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTripMap.swift; path = "../../../../../../../../Downloads/GedIS-d35ff479c757374b07db13d30c1f7a96c46a9541 2/Touris/Touris/MyTripMap.swift"; sourceTree = "<group>"; };
+		E56FE4652C5602DA0010C7AF /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = "../../../../../../../../../Downloads/GedIS-d35ff479c757374b07db13d30c1f7a96c46a9541 2/Touris/Touris/ProfileView.swift"; sourceTree = "<group>"; };
 		E5F77CC62C549338003A2A43 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F57EE2922C5491260015A482 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F57EE3102C5554910015A482 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
-		F57EE3142C55A0230015A482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F58AF2A62C5455D300B9881C /* Touris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Touris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58AF2A92C5455D300B9881C /* TourisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourisApp.swift; sourceTree = "<group>"; };
 		F58AF2AB2C5455D300B9881C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -175,7 +179,7 @@
 		F58AF2A82C5455D300B9881C /* Touris */ = {
 			isa = PBXGroup;
 			children = (
-				F57EE3142C55A0230015A482 /* GoogleService-Info.plist */,
+				E56FE4612C5600CC0010C7AF /* GoogleService-Info.plist */,
 				F58AF2A92C5455D300B9881C /* TourisApp.swift */,
 				F58AF2AB2C5455D300B9881C /* ContentView.swift */,
 				F58AF2AD2C5455D500B9881C /* Assets.xcassets */,
@@ -184,6 +188,7 @@
 				F58AF2D42C54786E00B9881C /* FeedView.swift */,
 				F58AF2D62C5478A200B9881C /* CreatePostView.swift */,
 				F58AF2D82C5478C500B9881C /* MyTripView.swift */,
+				E56FE4632C56028A0010C7AF /* MyTripMap.swift */,
 				F58AF2DA2C5478FA00B9881C /* ExploreView.swift */,
 				F57EE2922C5491260015A482 /* HeaderView.swift */,
 				E5F77CC62C549338003A2A43 /* AuthViewModel.swift */,
@@ -198,6 +203,7 @@
 		F58AF2B02C5455D500B9881C /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				E56FE4652C5602DA0010C7AF /* ProfileView.swift */,
 				F58AF2B12C5455D500B9881C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -361,7 +367,7 @@
 			files = (
 				F58AF2B22C5455D500B9881C /* Preview Assets.xcassets in Resources */,
 				F58AF2AE2C5455D500B9881C /* Assets.xcassets in Resources */,
-				F57EE3152C55A0230015A482 /* GoogleService-Info.plist in Resources */,
+				E56FE4622C5600CC0010C7AF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,11 +398,13 @@
 				F58AF2D52C54786E00B9881C /* FeedView.swift in Sources */,
 				6FFD1D0B2C54A75900B89848 /* CreateAccountView.swift in Sources */,
 				F58AF2AA2C5455D300B9881C /* TourisApp.swift in Sources */,
+				E56FE4642C56028A0010C7AF /* MyTripMap.swift in Sources */,
 				E5F77CC72C549338003A2A43 /* AuthViewModel.swift in Sources */,
 				F57EE3112C5554910015A482 /* CardDetailView.swift in Sources */,
 				F58AF2DB2C5478FA00B9881C /* ExploreView.swift in Sources */,
 				6FFD1D152C5558FC00B89848 /* ImagePicker.swift in Sources */,
 				F58AF2D92C5478C500B9881C /* MyTripView.swift in Sources */,
+				E56FE4662C5602DA0010C7AF /* ProfileView.swift in Sources */,
 				F57EE2932C5491260015A482 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
