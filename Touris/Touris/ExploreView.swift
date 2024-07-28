@@ -11,7 +11,7 @@ import SwiftUI
              y: 34.0549,
              spatialReference: .wgs84
          ),
-         scale: 1e6
+         scale: 5e4
      )
   
      /// Denotes whether the map view is navigating. Used for the repeat search
