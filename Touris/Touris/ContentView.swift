@@ -4,12 +4,14 @@ import FirebaseAuth
 struct ContentView: View {
     @ObservedObject var authViewModel = AuthViewModel()
     @State private var exploreVariable: String = "Hello from ExploreView"
-    @State  var addToTripLocations: [Location] = []
-    
+    @State private var addToTripLocations: [Location] = []
+    @StateObject private var postsViewModel = PostsViewModel()
+
     var body: some View {
         Group {
             if authViewModel.isSignedIn {
                 MainView(addToTripLocations: addToTripLocations)
+                    .environmentObject(postsViewModel)
             } else {
                 SignInView(authViewModel: authViewModel)
             }
@@ -21,11 +23,11 @@ struct ContentView: View {
     }
 }
 
-
 struct MainView: View {
-    
     @State private var exploreVariable: String = "Hello from ExploreView"
-    @State  var addToTripLocations: [Location]
+    @State var addToTripLocations: [Location] = []
+    @EnvironmentObject var postsViewModel: PostsViewModel
+    
     var body: some View {
         VStack(spacing: 0) {
             HeaderView() // Include the header at the top
@@ -41,10 +43,10 @@ struct MainView: View {
                         Text("Create Post")
                     }
                 ExploreView(addToTripLocations: addToTripLocations, onAddToTrip: addLocation)
-                .tabItem {
-                    Image(systemName: "mappin")
-                    Text("Explore")
-                }
+                    .tabItem {
+                        Image(systemName: "mappin")
+                        Text("Explore")
+                    }
                 MyTripView(exploreVariable: $exploreVariable, addToTripLocations: $addToTripLocations)
                     .tabItem {
                         Image(systemName: "list.bullet")
@@ -53,12 +55,16 @@ struct MainView: View {
             }
         }
     }
-    
-    // Function to handle adding a new location
-    private func addLocation(location: Location) {
-        addToTripLocations.append(location)
-        print("Added location: \(location.name)")
-    }
-    
+   
+     
+  
+      private func addLocation(location: Location) {
+
+            addToTripLocations.append(location)
+
+            print("Added location: \(location.name)")
+
+        }
+     
 }
 

@@ -12,7 +12,7 @@ struct TourisApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(addToTripLocations:addToTripLocations)
+            ContentView()
         }
     }
 }

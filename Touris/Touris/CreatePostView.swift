@@ -3,16 +3,17 @@ import ArcGIS
 import ArcGISToolkit
 
 struct CreatePostView: View {
-    @State private var itineraries: [MyItinerary] = []
-    @State private var selectedLocations: [MyLocation] = []
+    @EnvironmentObject var postsViewModel: PostsViewModel
+    @State private var selectedLocations: [Location] = []
     @State private var showImagePicker = false
     @State private var showLocationEditor = false
-    @State private var currentEditingLocation: MyLocation?
+    @State private var currentEditingLocation: Location?
     
     @State private var locationName = ""
     @State private var locationDescription = ""
     @State private var locationRating = ""
     @State private var selectedImages: [UIImage] = []
+    @State private var itineraryDescription = ""  // New state variable for itinerary description
     
     @StateObject private var locatorDataSource = LocatorSearchSource(
         name: "My Locator",
@@ -141,13 +142,15 @@ struct CreatePostView: View {
                                             .font(.subheadline)
                                         ScrollView(.horizontal, showsIndicators: false) {
                                             HStack(spacing: 10) {
-                                                ForEach(location.photos, id: \.self) { image in
-                                                    Image(uiImage: image)
-                                                        .resizable()
-                                                        .scaledToFill()
-                                                        .frame(width: 100, height: 100)
-                                                        .clipped()
-                                                        .cornerRadius(10)
+                                                ForEach(location.photos, id: \.self) { photoName in
+                                                    if let image = loadImage(named: photoName) {
+                                                        Image(uiImage: image)
+                                                            .resizable()
+                                                            .scaledToFill()
+                                                            .frame(width: 100, height: 100)
+                                                            .clipped()
+                                                            .cornerRadius(10)
+                                                    }
                                                 }
                                             }
                                         }
@@ -162,8 +165,8 @@ struct CreatePostView: View {
                                         currentEditingLocation = location
                                         locationName = location.name
                                         locationDescription = location.description
-                                        locationRating = String(location.rating)
-                                        selectedImages = location.photos
+                                        locationRating = String(location.rating ?? 5)
+                                        selectedImages = location.photos.compactMap { loadImage(named: $0) }
                                         showLocationEditor = true
                                     }
                                 }
@@ -174,6 +177,11 @@ struct CreatePostView: View {
                         .cornerRadius(20)
                         .shadow(radius: 20)
                     }
+
+                    // New Itinerary Description Field
+                    TextField("Itinerary Description", text: $itineraryDescription)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
                     
                     Button(action: shareItinerary) {
                         Text("Share Itinerary")
@@ -196,7 +204,7 @@ struct CreatePostView: View {
     }
     
     private func addLocation(name: String, x: Double, y: Double) {
-        let location = MyLocation(id: UUID().uuidString, name: name, description: "", rating: 0.0, photos: [], x: x, y: y)
+        let location = Location(name: name, description: "", photos: [], x: x, y: y, rating: 5)
         selectedLocations.append(location)
     }
     
@@ -266,10 +274,18 @@ struct CreatePostView: View {
                 selectedLocations[index].name = locationName
                 selectedLocations[index].description = locationDescription
                 selectedLocations[index].rating = Double(locationRating) ?? 0.0
-                selectedLocations[index].photos = selectedImages
+                selectedLocations[index].photos = selectedImages.compactMap { image in
+                    let imageName = UUID().uuidString
+                    saveImage(image: image, name: imageName)
+                    return imageName
+                }
             }
         } else {
-            let newLocation = MyLocation(id: UUID().uuidString, name: locationName, description: locationDescription, rating: Double(locationRating) ?? 0.0, photos: selectedImages, x: xCoordinate, y: yCoordinate)
+            let newLocation = Location(name: locationName, description: locationDescription, photos: selectedImages.compactMap { image in
+                let imageName = UUID().uuidString
+                saveImage(image: image, name: imageName)
+                return imageName
+            }, x: xCoordinate, y: yCoordinate, rating: 5)
             selectedLocations.append(newLocation)
         }
         
@@ -285,80 +301,33 @@ struct CreatePostView: View {
     }
     
     private func shareItinerary() {
-        let newItinerary = MyItinerary(id: UUID().uuidString, title: "New Itinerary", locations: selectedLocations)
-        itineraries.append(newItinerary)
+        let newItinerary = Itinerary(id: postsViewModel.itineraries.count + 5, name: "New Itinerary", description: itineraryDescription, locations: selectedLocations)
+        postsViewModel.addItinerary(newItinerary)
         
         selectedLocations.removeAll()
+        itineraryDescription = ""  // Reset itinerary description
+    }
+    
+    private func saveImage(image: UIImage, name: String) {
+        if let data = image.jpegData(compressionQuality: 1.0),
+           let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) {
+            let fileURL = directory.appendingPathComponent("\(name).jpg")
+            try? data.write(to: fileURL)
+        }
+    }
+    
+    private func loadImage(named name: String) -> UIImage? {
+        if let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) {
+            let fileURL = directory.appendingPathComponent("\(name).jpg")
+            return UIImage(contentsOfFile: fileURL.path)
+        }
+        return nil
     }
 }
 
 struct CreatePostView_Previews: PreviewProvider {
     static var previews: some View {
         CreatePostView()
-    }
-}
-
-// Dummy models for MyLocation and MyItinerary
-struct MyLocation: Identifiable {
-    var id: String
-    var name: String
-    var description: String
-    var rating: Double
-    var photos: [UIImage]
-    var x: Double
-    var y: Double
-}
-
-struct MyItinerary: Identifiable {
-    var id: String
-    var title: String
-    var locations: [MyLocation]
-}
-
-
-struct CardPostView: View {
-    var title: String
-    var description: String
-    var images: [UIImage]
-
-    var body: some View {
-        VStack(spacing: 10) {
-            // Scrollable Image Section
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(images, id: \.self) { image in
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 200, height: 150)
-                            .clipped()
-                            .cornerRadius(10)
-                            .padding(.top)
-                    }
-                }
-                .padding(.horizontal)
-            }
-
-            // Description with Profile Picture
-            HStack(alignment: .top) {
-                Image("profile_picture")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
-
-                Text(description)
-                    .font(.subheadline)
-                    .padding(.bottom)
-                    .padding([.leading], 10)
-            }
-            .padding([.leading, .trailing])
-        }
-        .frame(maxWidth: .infinity)
-        .background(Color.white)
-        .cornerRadius(10)
-        .shadow(radius: 5)
-        .padding(.horizontal)
     }
 }
 

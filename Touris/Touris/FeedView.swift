@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct CardView: View {
     var title: String
     var description: String
@@ -24,20 +23,16 @@ struct CardView: View {
                 .padding(.horizontal)
             }
 
-            // Description with Profile Picture
-            HStack(alignment: .top) {
-                Image("profile_picture")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
-
+            // Title and Description
+            VStack(alignment: .leading, spacing: 5) {
+                Text(title)
+                    .font(.headline)
                 Text(description)
                     .font(.subheadline)
-                    .padding(.bottom)
-                    .padding([.leading], 10)
+                    .multilineTextAlignment(.leading)
             }
-            .padding([.leading, .trailing])
+            .padding([.leading, .trailing, .bottom])
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(maxWidth: 350)
         .background(Color.white)
@@ -47,18 +42,30 @@ struct CardView: View {
     }
 }
 
+struct CardView_Previews: PreviewProvider {
+    static var previews: some View {
+        CardView(title: "Sample Title", description: "Sample Description", images: [UIImage(named: "sample_image")!])
+    }
+}
+
+
+
+import SwiftUI
+
 struct FeedView: View {
-    @State private var allItineraries: [Itinerary] = [
-        Itinerary(id: 1, name: "Hollywood", description: "An exciting trip to Hollywood!", locations: [Location(name: "Nobu", description: "Peruvian Japanese food!", photos: ["Nobu1"], x: -118.383736, y: 34.052235), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743)]),
-        Itinerary(id: 2, name: "Beverly Hills", description: "Beverly Hills Shopping", locations: [Location(name: "Nobu", description: "Peruvian Japanese food!", photos: ["Nobu1"], x: -118.383736, y: 34.052235), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743)])
-    ]
+    @EnvironmentObject var postsViewModel: PostsViewModel
     @State private var imagesDict: [Int: [UIImage]] = [:]
+    
+    @State private var allItineraries: [Itinerary] = [
+        Itinerary(id: 1, name: "Hollywood", description: "An exciting trip to Hollywood!", locations: [Location(name: "Nobu", description: "Peruvian Japanese food!", photos: ["Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)]),
+        Itinerary(id: 2, name: "Beverly Hills", description: "Beverly Hills Shopping", locations: [Location(name: "Nobu", description: "Peruvian Japanese food!", photos: ["Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)])
+    ]
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    ForEach(allItineraries) { itinerary in
+                    ForEach(postsViewModel.itineraries + allItineraries) { itinerary in
                         if let images = imagesDict[itinerary.id] {
                             NavigationLink(destination: CardDetailView(itinerary: itinerary)) {
                                 CardView(title: itinerary.name, description: itinerary.description, images: images)
@@ -69,7 +76,7 @@ struct FeedView: View {
                 .padding()
             }
             .onAppear {
-                loadImages(for: allItineraries)
+                loadImages(for: postsViewModel.itineraries + allItineraries)
             }
         }
     }
@@ -81,7 +88,7 @@ struct FeedView: View {
             var images: [UIImage] = []
             for location in itinerary.locations {
                 for photoName in location.photos {
-                    if let image = UIImage(named: photoName) {
+                    if let image = UIImage(named: photoName) ?? loadImage(named: photoName) {
                         images.append(image)
                     }
                 }
@@ -91,7 +98,24 @@ struct FeedView: View {
         
         self.imagesDict = newImagesDict
     }
+    
+    private func loadImage(named name: String) -> UIImage? {
+        if let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) {
+            let fileURL = directory.appendingPathComponent("\(name).jpg")
+            return UIImage(contentsOfFile: fileURL.path)
+        }
+        return nil
+    }
 }
+
+struct FeedView_Previews: PreviewProvider {
+    static var previews: some View {
+        FeedView().environmentObject(PostsViewModel())
+    }
+}
+
+
+
 
 struct Itinerary: Identifiable {
     var id: Int
@@ -107,11 +131,10 @@ struct Location: Identifiable, Hashable {
     var photos: [String]
     var x: Double
     var y: Double
+    var rating: Double?
     var selectedDate: Date?
 }
 
-struct FeedView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeedView()
-    }
-}
+
+
+

@@ -136,9 +136,5 @@ public class Model: ObservableObject {
 }
 
 
-struct CardDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardDetailView(itinerary: Itinerary(id: 1, name: "Sample Itinerary", description: "Sample description", locations: [Location(name: "Sample Location", description: "Sample description", photos: ["sample_photo"], x: -118.352918, y: 34.137743)]))
-    }
-}
+
 
