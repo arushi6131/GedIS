@@ -29,38 +29,36 @@ struct CalendarView: View {
 }
 
 // TestLocation struct representing a location
-struct TestLocation: Identifiable {
+struct TestLocation: Identifiable, Hashable {
     var id = UUID() // Unique identifier
     var name: String
     var selectedDate: Date? // Store the selected date and time
 }
 
+
 struct MyTripView: View {
-    @State private var isTripMap = false
-    // Hardcoded locations as a mutable State variable
-    @State private var locations: [TestLocation] = [
-        TestLocation(name: "Rodeo Drive", selectedDate: nil),
-        TestLocation(name: "Universal Studios", selectedDate: nil),
-        TestLocation(name: "Santa Monica Pier", selectedDate: nil),
-    ]
+    // State variable to hold locations
+    @State private var locations: [TestLocation] = []
     
     @State private var showingCalendar: Bool = false // Track if calendar view should be shown
-    @State private var selectedLocation: TestLocation? // Track the selected location for date setting
+    @State private var selectedLocationIndex: Int? // Track the selected location index for date setting
     @Binding var exploreVariable: String
-    @Binding var addToTripLocations: [Location]
-
+    @Binding var addToTripLocations: [Location] // Array of locations to which we will add selected locations
+    @State private var isTripMap = false
+   
     var body: some View {
         NavigationView {
             VStack {
+                // Display locations added to the trip
                 List {
-                    ForEach($locations) { $location in // Use binding to modify the location directly
+                    ForEach(locations, id: \.self) { location in
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(location.name)
                                     .font(.headline)
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(.blue)
                                     .padding(.bottom, 2)
-                                
+
                                 // Display the selected date if available
                                 if let selectedDate = location.selectedDate {
                                     Text("Date: \(formattedDate(selectedDate))")
@@ -76,7 +74,7 @@ struct MyTripView: View {
                             // Button to open calendar
                             Button(action: {
                                 withAnimation { // Add animation for the button
-                                    selectedLocation = location // Set the selected location
+                                    selectedLocationIndex = locations.firstIndex(where: { $0.id == location.id }) // Set the selected location index
                                     showingCalendar.toggle() // Show the calendar view
                                 }
                             }) {
@@ -101,14 +99,13 @@ struct MyTripView: View {
                 }
                 .toolbar {
                     // Navigation link to ExploreView
-                    NavigationLink(destination: ExploreView(addToTripLocations: addToTripLocations)) {
+                    NavigationLink(destination: ExploreView(onAddToTrip: addLocation)) {
                         Text("Explore Locations")
                     }
                     Spacer()
                     EditButton() // Add Edit button to toggle delete mode
                 }
                 .listStyle(PlainListStyle()) // Remove default list styling for better appearance
-
                 // Add the "View My Trip Map" button
                 Button(action: {
                     isTripMap.toggle()
@@ -128,19 +125,27 @@ struct MyTripView: View {
                 .sheet(isPresented: $isTripMap) {
                     MyTripMap()
                 }
+            
             }
-            .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all)) // Background color
             .sheet(isPresented: $showingCalendar) {
-                if let location = selectedLocation {
-                    CalendarView(selectedDate: $locations[locations.firstIndex(where: { $0.id == location.id })!].selectedDate) // Pass the binding of the selected date
+                if let index = selectedLocationIndex {
+                    CalendarView(selectedDate: $locations[index].selectedDate) // Pass the binding of the selected date
                 }
             }
         }
+        .onChange(of: addToTripLocations) { newValue in
+            // Populate locations from addToTripLocations whenever it changes
+            locations = newValue.map { TestLocation(name: $0.name, selectedDate: $0.selectedDate) }
+        }
     }
 
-    // Function to delete a location
+    private func addLocation(location: Location) {
+        addToTripLocations.append(location)
+        print("Added location: \(location.name)")
+    }
+
     private func deleteLocation(at offsets: IndexSet) {
-        locations.remove(atOffsets: offsets)
+        locations.remove(atOffsets: offsets) // Remove the location from locations
     }
 
     // Function to format the date for display

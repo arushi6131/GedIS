@@ -100,13 +100,14 @@ struct Itinerary: Identifiable {
     var locations: [Location]
 }
 
-struct Location: Identifiable {
+struct Location: Identifiable, Hashable {
     var id = UUID()
     var name: String
     var description: String
     var photos: [String]
     var x: Double
     var y: Double
+    var selectedDate: Date?
 }
 
 struct FeedView_Previews: PreviewProvider {

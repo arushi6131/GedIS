@@ -4,7 +4,7 @@ import FirebaseAuth
 struct ContentView: View {
     @ObservedObject var authViewModel = AuthViewModel()
     @State private var exploreVariable: String = "Hello from ExploreView"
-    @State  var addToTripLocations: [Location]
+    @State  var addToTripLocations: [Location] = []
     
     var body: some View {
         Group {
@@ -40,7 +40,7 @@ struct MainView: View {
                         Image(systemName: "plus.app")
                         Text("Create Post")
                     }
-                ExploreView(addToTripLocations: addToTripLocations)
+                ExploreView(addToTripLocations: addToTripLocations, onAddToTrip: addLocation)
                 .tabItem {
                     Image(systemName: "mappin")
                     Text("Explore")
@@ -53,5 +53,12 @@ struct MainView: View {
             }
         }
     }
+    
+    // Function to handle adding a new location
+    private func addLocation(location: Location) {
+        addToTripLocations.append(location)
+        print("Added location: \(location.name)")
+    }
+    
 }
 
