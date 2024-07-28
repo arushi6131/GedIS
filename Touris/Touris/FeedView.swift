@@ -22,17 +22,19 @@ struct CardView: View {
                 }
                 .padding(.horizontal)
             }
-
-            // Title and Description
-            VStack(alignment: .leading, spacing: 5) {
-                Text(title)
-                    .font(.headline)
-                Text(description)
-                    .font(.subheadline)
-                    .multilineTextAlignment(.leading)
+            
+            HStack{
+                // Title and Description
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(title)
+                        .font(.headline)
+                    Text(description)
+                        .font(.subheadline)
+                        .multilineTextAlignment(.leading)
+                }
+                .padding([.leading, .trailing, .bottom])
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding([.leading, .trailing, .bottom])
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(maxWidth: 350)
         .background(Color.white)
@@ -57,11 +59,11 @@ struct FeedView: View {
     @State private var imagesDict: [Int: [UIImage]] = [:]
     
     @State private var allItineraries: [Itinerary] = [
-        Itinerary(id: 1, name: "Hollywood", description: "An exciting trip to Hollywood!", locations: [Location(name: "Nobu", description: "Peruvian Japanese food!", photos: ["sas4", "sas2"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["sas3"], x: -118.352918, y: 34.137743, rating: 5)]),
-        Itinerary(id: 2, name: "Beverly Hills", description: "Beverly Hills Shopping", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["sas1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["sas5"], x: -118.352918, y: 34.137743, rating: 5)]),
-        Itinerary(id: 3, name: "Santa Monica", description: "Beverly Hills Shopping", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Inglewood"], x: -118.352918, y: 34.137743, rating: 5)]),
-        Itinerary(id: 4, name: "Inglewood", description: "Beverly Hills Shopping", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)]),
-        Itinerary(id: 5, name: "Pasadena", description: "Beverly Hills Shopping", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)])
+        Itinerary(id: 1, name: "Hollywood", description: "An exciting trip to Hollywood!", locations: [Location(name: "Walk of Fame", description: "Looking at the walk of fame stars!", photos: ["sas4", "sas3"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)]),
+        Itinerary(id: 2, name: "Beverly Hills", description: "Beverly Hills Shopping", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["sas1","sas2"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["sas5"], x: -118.352918, y: 34.137743, rating: 5)]),
+        Itinerary(id: 3, name: "Santa Monica", description: "A fun day at the beach!", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["feedimg1"], x: -118.352918, y: 34.137743, rating: 5)]),
+        Itinerary(id: 4, name: "Inglewood", description: "Adventure in Inglewood", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["feedimg2","Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)]),
+        Itinerary(id: 5, name: "Pasadena", description: "Road Trip to Pasadena!", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["feedim3","Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)])
     ]
 
     var body: some View {
@@ -137,7 +139,3 @@ struct Location: Identifiable, Hashable {
     var rating: Double?
     var selectedDate: Date?
 }
-
-
-
-
