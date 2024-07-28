@@ -1,12 +1,13 @@
 import Foundation
-import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
 import SwiftUI
+import UIKit
 
+// Define Location and Itinerary types
 /*struct Location: Identifiable, Codable {
-    var id: String = UUID().uuidString // Add a unique identifier
+    var id: String = UUID().uuidString
     var name: String
     var description: String
     var rating: Double
@@ -14,42 +15,41 @@ import SwiftUI
 }
 
 struct Itinerary: Identifiable, Codable {
-    var id: String = UUID().uuidString // Add a unique identifier
+    var id: String = UUID().uuidString
     var title: String
     var locations: [Location]
 }*/
 
+// AuthViewModel class
 class AuthViewModel: ObservableObject {
     @Published var errorMessage = ""
-    @Published var currentUserID = Auth.auth().currentUser?.uid
+    @Published var currentUserID: String?
     @Published var isSignedIn = false
     @Published var allItineraries: [Itinerary] = []
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
     
+    private let hardcodedEmail = "test@test.com"
+    private let hardcodedPassword = "password"
+    
     func signIn(email: String, password: String) {
-        // Reset error message
         errorMessage = ""
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                self.errorMessage = error.localizedDescription
-            } else {
-                self.isSignedIn = true
-                self.currentUserID = result?.user.uid
-            }
+        
+        if email == hardcodedEmail && password == hardcodedPassword {
+            self.isSignedIn = true
+            self.currentUserID = "hardcodedUserID"
+        } else {
+            self.errorMessage = "Invalid email or password"
         }
     }
     
     func createAccount(email: String, password: String) {
-        // Reset error message
         errorMessage = ""
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                self.errorMessage = error.localizedDescription
-            } else {
-                // Sign in the user after successful account creation
-                self.signIn(email: email, password: password)
-            }
+        
+        if email == hardcodedEmail {
+            self.errorMessage = "Email already in use"
+        } else {
+            self.signIn(email: email, password: password)
         }
     }
     
@@ -59,17 +59,15 @@ class AuthViewModel: ObservableObject {
             return
         }
         
-        let storageRef = storage.reference()
-        let imagesRef = storageRef.child("images/\(UUID().uuidString).jpg")
-        
+        let storageRef = storage.reference().child("images/\(UUID().uuidString).jpg")
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        imagesRef.putData(imageData, metadata: metadata) { (metadata, error) in
+        storageRef.putData(imageData, metadata: metadata) { (metadata, error) in
             if let error = error {
                 completion(.failure(error))
             } else {
-                imagesRef.downloadURL { (url, error) in
+                storageRef.downloadURL { (url, error) in
                     if let error = error {
                         completion(.failure(error))
                     } else if let url = url {
@@ -80,22 +78,20 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    // Save itinerary for the logged-in user
-    /* func saveItinerary(itinerary: Itinerary, completion: @escaping (Result<Void, Error>) -> Void) {
+    /*func saveItinerary(itinerary: Itinerary, completion: @escaping (Result<Void, Error>) -> Void) {
      guard let userId = currentUserID else {
      completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User is not signed in."])))
      return
      }
      
      do {
-     let document = try db.collection("users").document(userId).collection("itineraries").addDocument(from: itinerary)
+     _ = try db.collection("users").document(userId).collection("itineraries").addDocument(from: itinerary)
      completion(.success(()))
-     } catch let error {
+     } catch {
      completion(.failure(error))
      }
      }
      
-     // Retrieve all itineraries for the logged-in user
      func getItineraries(completion: @escaping (Result<[Itinerary], Error>) -> Void) {
      guard let userId = currentUserID else {
      completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User is not signed in."])))
@@ -114,7 +110,6 @@ class AuthViewModel: ObservableObject {
      }
      }
      
-     // Fetch image from Firebase Storage
      func fetchImage(from url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
      let storageRef = storage.reference(forURL: url)
      storageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
@@ -128,7 +123,6 @@ class AuthViewModel: ObservableObject {
      }
      }
      
-     // Retrieve all itineraries from all users
      func getAllItineraries(completion: @escaping (Result<[Itinerary], Error>) -> Void) {
      db.collection("users").getDocuments { (userSnapshot, error) in
      if let error = error {
@@ -159,5 +153,6 @@ class AuthViewModel: ObservableObject {
      }
      }
      }
-     }*/
+     }
+     */
 }
