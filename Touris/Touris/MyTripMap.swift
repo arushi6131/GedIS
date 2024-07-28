@@ -140,7 +140,7 @@ struct MyTripMap: View {
                         }
                     }
                     .padding()
-                    .background(Color.blue)
+                    .background(Color(red: 45.0/255, green: 154.0/255, blue: 161.0/255))
                     .foregroundColor(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 }

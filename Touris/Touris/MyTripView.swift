@@ -128,12 +128,13 @@ struct MyTripView: View {
                 }
             
             }
+            .background(Color(red: 207/255, green: 245/255, blue: 236/255)) 
             .sheet(isPresented: $showingCalendar) {
                 if let index = selectedLocationIndex {
                     CalendarView(selectedDate: $locations[index].selectedDate) // Pass the binding of the selected date
                 }
             }
-        }
+        }// Set a background color for the header
         .onChange(of: addToTripLocations) { newValue in
             // Populate locations from addToTripLocations whenever it changes
             locations = newValue.map { TestLocation(name: $0.name, selectedDate: $0.selectedDate) }

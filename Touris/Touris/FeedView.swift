@@ -117,6 +117,7 @@ struct FeedView: View {
             .onAppear {
                 loadImages(for: postsViewModel.itineraries + allItineraries)
             }
+            .background(Color(red: 207/255, green: 245/255, blue: 236/255))
         }
     }
 
