@@ -3,11 +3,13 @@ import FirebaseAuth
 
 struct ContentView: View {
     @ObservedObject var authViewModel = AuthViewModel()
+    @State private var exploreVariable: String = "Hello from ExploreView"
+    @State  var addToTripLocations: [Location]
     
     var body: some View {
         Group {
             if authViewModel.isSignedIn {
-                MainView()
+                MainView(addToTripLocations: addToTripLocations)
             } else {
                 SignInView(authViewModel: authViewModel)
             }
@@ -19,13 +21,11 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
-
-import SwiftUI
 
 struct MainView: View {
+    
+    @State private var exploreVariable: String = "Hello from ExploreView"
+    @State  var addToTripLocations: [Location]
     var body: some View {
         VStack(spacing: 0) {
             HeaderView() // Include the header at the top
@@ -40,12 +40,12 @@ struct MainView: View {
                         Image(systemName: "plus.app")
                         Text("Create Post")
                     }
-            ExploreView()
+                ExploreView(addToTripLocations: addToTripLocations)
                 .tabItem {
                     Image(systemName: "mappin")
                     Text("Explore")
                 }
-                MyTripView()
+                MyTripView(exploreVariable: $exploreVariable, addToTripLocations: $addToTripLocations)
                     .tabItem {
                         Image(systemName: "list.bullet")
                         Text("My Trip")
@@ -55,6 +55,3 @@ struct MainView: View {
     }
 }
 
-#Preview {
-    MainView()
-}

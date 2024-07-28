@@ -8,9 +8,11 @@ struct TourisApp: App {
         FirebaseApp.configure()
     }
     
+    @State  var addToTripLocations: [Location] = []
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(addToTripLocations:addToTripLocations)
         }
     }
 }

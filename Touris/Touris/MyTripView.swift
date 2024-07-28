@@ -45,6 +45,8 @@ struct MyTripView: View {
     
     @State private var showingCalendar: Bool = false // Track if calendar view should be shown
     @State private var selectedLocation: TestLocation? // Track the selected location for date setting
+    @Binding var exploreVariable: String
+    @Binding var addToTripLocations: [Location]
 
     var body: some View {
         NavigationView {
@@ -98,7 +100,7 @@ struct MyTripView: View {
             }
             .toolbar {
                 // Navigation link to ExploreView
-                NavigationLink(destination: ExploreView()) {
+                NavigationLink(destination: ExploreView(addToTripLocations: addToTripLocations)) {
                     Text("Explore Locations")
                 }
                 Spacer()
@@ -129,8 +131,3 @@ struct MyTripView: View {
     }
 }
 
-struct MyTripView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyTripView()
-    }
-}
