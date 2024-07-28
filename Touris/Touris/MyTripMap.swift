@@ -1,6 +1,15 @@
 import SwiftUI
 import ArcGIS
 
+// Define the predefined locations
+let predefinedLocations = [
+    (name: "Beverly Hills", description: "A beautiful city known for its upscale shops and celebrity homes.", x: 34.073620, y: -118.400356),
+    (name: "Hollywood Sign", description: "An iconic landmark and American cultural symbol.", x: 34.134115, y: -118.321548),
+    (name: "Santa Monica", description: "A beachfront city known for its pier and beautiful coastline.", x: 34.019454, y: -118.491191),
+    (name: "Inglewood", description: "A city known for its sports and entertainment venues.", x: 33.961680, y: -118.353131),
+    (name: "Pasadena", description: "A city known for its cultural and scientific institutions.", x: 34.147785, y: -118.144516)
+]
+
 class Model1: ObservableObject {
     @Published var routeDetails: String = ""
     @Published var selectedStops: [Stop] = []
@@ -17,9 +26,19 @@ class Model1: ObservableObject {
         let customBasemapURL = URL(string: "https://www.arcgis.com/apps/mapviewer/index.html?webmap=0dd3259879ab43e79a9f878e2febf1a2")!
         let customBasemap = Basemap(url: customBasemapURL)
         self.map = Map(basemap: customBasemap!)
-        self.map.initialViewpoint = Viewpoint(latitude: 45.526201, longitude: -122.65, scale: 144447.638572)
+        self.map.initialViewpoint = Viewpoint(latitude: 34.052235, longitude: -118.243683, scale: 144447.638572) // Centered around LA
         let symbol = SimpleLineSymbol(style: .solid, color: .systemBlue, width: 4)
         self.routeGraphic = Graphic(geometry: nil, symbol: symbol)
+        
+        // Add predefined locations as stops
+        addPredefinedStops()
+    }
+
+    func addPredefinedStops() {
+        for location in predefinedLocations {
+            let point = Point(x: location.y, y: location.x, spatialReference: .wgs84)
+            addStop(at: point)
+        }
     }
 
     func addStop(at point: Point) {
@@ -57,7 +76,7 @@ class Model1: ObservableObject {
             let parameters = try await routeTask.makeDefaultParameters()
             parameters.setStops(selectedStops)
             parameters.returnsDirections = true
-            parameters.directionsLanguage = "es"
+            parameters.directionsLanguage = "en"
             
             let routeResult = try await routeTask.solveRoute(using: parameters)
             guard let solvedRoute = routeResult.routes.first else { return }
@@ -92,25 +111,17 @@ struct MyTripMap: View {
     var body: some View {
         VStack(spacing: 0) {
             MapView(map: model1.map, graphicsOverlays: [model1.routeGraphicsOverlay])
-                .onSingleTapGesture { screenPoint, mapPoint in
-                    model1.addStop(at: mapPoint)
-                }
                 .edgesIgnoringSafeArea(.all)
                 .frame(maxHeight: .infinity)
-
-            if !model1.routeDetails.isEmpty {
-                VStack {
-                    ScrollView {
-                        Text(model1.routeDetails)
-                            .padding()
-                    }
-                    .background(Color.white)
-                    .cornerRadius(20)
-                    .shadow(radius: 20)
-                    .frame(height: 200)
+            
+            List(predefinedLocations, id: \.name) { location in
+                VStack(alignment: .leading) {
+                    Text(location.name)
+                        .font(.headline)
+                    Text(location.description)
+                        .font(.subheadline)
                 }
-                .transition(.move(edge: .bottom))
-                .animation(.default)
+                .padding()
             }
 
             VStack {
