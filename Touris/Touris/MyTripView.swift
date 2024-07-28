@@ -36,6 +36,7 @@ struct TestLocation: Identifiable {
 }
 
 struct MyTripView: View {
+    @State private var isTripMap = false
     // Hardcoded locations as a mutable State variable
     @State private var locations: [TestLocation] = [
         TestLocation(name: "Rodeo Drive", selectedDate: nil),
@@ -50,69 +51,89 @@ struct MyTripView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach($locations) { $location in // Use binding to modify the location directly
-                    HStack{
-                        VStack(alignment: .leading) {
-                            Text(location.name)
-                                .font(.headline)
-                                .foregroundColor(.blue)
-                                .padding(.bottom, 2)
-                            
-                            // Display the selected date if available
-                            if let selectedDate = location.selectedDate {
-                                Text("Date: \(formattedDate(selectedDate))")
-                                    .font(.subheadline)
-                                    .foregroundColor(.green)
-                            } else {
-                                Text("No date selected")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
+            VStack {
+                List {
+                    ForEach($locations) { $location in // Use binding to modify the location directly
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(location.name)
+                                    .font(.headline)
+                                    .foregroundColor(.primary)
+                                    .padding(.bottom, 2)
+                                
+                                // Display the selected date if available
+                                if let selectedDate = location.selectedDate {
+                                    Text("Date: \(formattedDate(selectedDate))")
+                                        .font(.subheadline)
+                                        .foregroundColor(.green)
+                                } else {
+                                    Text("No date selected")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
                             }
-                        }// Push the button to the right
-                        Spacer()
-                        // Button to open calendar
-                        Button(action: {
-                            withAnimation { // Add animation for the button
-                                selectedLocation = location // Set the selected location
-                                showingCalendar.toggle() // Show the calendar view
+                            Spacer()
+                            // Button to open calendar
+                            Button(action: {
+                                withAnimation { // Add animation for the button
+                                    selectedLocation = location // Set the selected location
+                                    showingCalendar.toggle() // Show the calendar view
+                                }
+                            }) {
+                                Image(systemName: "calendar") // Use a calendar icon
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30) // Smaller button size
+                                    .padding(10)
+                                    .background(Color.green)
+                                    .foregroundColor(.white)
+                                    .clipShape(Circle()) // Make it circular
+                                    .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 1)
                             }
-                        }) {
-                            Image(systemName: "calendar") // Use a calendar icon
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 30, height: 30) // Smaller button size
-                                .padding(10)
-                                .background(Color.green)
-                                .foregroundColor(.white)
-                                .clipShape(Circle()) // Make it circular
-                                .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 1)
                         }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                        .padding(.vertical, 5) // Spacing between rows
                     }
-                    .padding()
-                    .frame(width: 380)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-                    .padding(.vertical, 5) // Spacing between rows
+                    .onDelete(perform: deleteLocation) // Enable swipe-to-delete
                 }
-                .onDelete(perform: deleteLocation) // Enable swipe-to-delete
-            }
-            .toolbar {
-                // Navigation link to ExploreView
-                NavigationLink(destination: ExploreView(addToTripLocations: addToTripLocations)) {
-                    Text("Explore Locations")
+                .toolbar {
+                    // Navigation link to ExploreView
+                    NavigationLink(destination: ExploreView(addToTripLocations: addToTripLocations)) {
+                        Text("Explore Locations")
+                    }
+                    Spacer()
+                    EditButton() // Add Edit button to toggle delete mode
                 }
-                Spacer()
-                EditButton() // Add Edit button to toggle delete mode
-                
+                .listStyle(PlainListStyle()) // Remove default list styling for better appearance
+
+                // Add the "View My Trip Map" button
+                Button(action: {
+                    isTripMap.toggle()
+                    // Action for viewing the trip map
+                }) {
+                    Text("View My Trip Map")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                        .padding(.horizontal)
+                }
+                .padding(.bottom, 20) // Space at the bottom of the view
+                .sheet(isPresented: $isTripMap) {
+                    MyTripMap()
+                }
             }
-            .listStyle(PlainListStyle()) // Remove default list styling for better appearance
-        }
-        .background(Color.blue.edgesIgnoringSafeArea(.all)) // Background color
-        .sheet(isPresented: $showingCalendar) {
-            if let location = selectedLocation {
-                CalendarView(selectedDate: $locations[locations.firstIndex(where: { $0.id == location.id })!].selectedDate) // Pass the binding of the selected date
+            .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all)) // Background color
+            .sheet(isPresented: $showingCalendar) {
+                if let location = selectedLocation {
+                    CalendarView(selectedDate: $locations[locations.firstIndex(where: { $0.id == location.id })!].selectedDate) // Pass the binding of the selected date
+                }
             }
         }
     }
@@ -130,4 +151,3 @@ struct MyTripView: View {
         return formatter.string(from: date)
     }
 }
-
