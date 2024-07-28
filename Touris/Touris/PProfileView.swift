@@ -14,7 +14,7 @@ struct PProfileView: View {
                     Text("Edit Profile")
                         .font(.body)
                         .padding(10)
-                        .background(Color(red: 45/255, green: 154/255, blue: 161/255))
+                        .background(Color(red: 45.0/255, green: 154.0/255, blue: 161.0/255))
                         .foregroundColor(.white)
                         .cornerRadius(8)
                         .padding(.trailing, 20)
@@ -22,7 +22,7 @@ struct PProfileView: View {
             }
             .padding(.top, 20)
             
-            HStack {
+            VStack(alignment: .center) {
                 Image("Arno")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -30,9 +30,8 @@ struct PProfileView: View {
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white, lineWidth: 4))
                     .shadow(radius: 10)
-                    .padding(.horizontal, 20)
                 
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
                     Text("Arno Abrahamian")
                         .font(.title)
                         .fontWeight(.bold)
@@ -41,9 +40,8 @@ struct PProfileView: View {
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }
-                
-                Spacer()
             }
+            .frame(maxWidth: .infinity)
             .padding(.top, 20)
             
             HStack {
@@ -92,3 +90,8 @@ struct PProfileView: View {
     }
 }
 
+struct PProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        PProfileView()
+    }
+}
