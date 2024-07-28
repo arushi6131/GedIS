@@ -93,7 +93,7 @@ import SwiftUI
                                      }) {
                                          Text("Add to My Trip")
                                              .padding()
-                                             .background(Color.blue)
+                                             .background(Color(red: 45/255, green: 154/255, blue: 161/255))
                                              .foregroundColor(.white)
                                              .cornerRadius(8)
                                      }

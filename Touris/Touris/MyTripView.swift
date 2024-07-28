@@ -120,7 +120,7 @@ struct MyTripView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.green)
+                        .background(Color(red: 45/255, green: 154/255, blue: 161/255))
                         .cornerRadius(10)
                         .shadow(radius: 5)
                         .padding(.horizontal)

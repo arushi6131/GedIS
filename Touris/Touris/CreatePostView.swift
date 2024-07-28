@@ -191,7 +191,7 @@ struct CreatePostView: View {
                         Text("Share Itinerary")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.green)
+                            .background(Color(red: 45/255, green: 154/255, blue: 161/255))
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
