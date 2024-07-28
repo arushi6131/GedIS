@@ -18,7 +18,7 @@ struct CalendarView: View {
                     dismiss() // Dismiss the view when the button is tapped
                 }
                 .padding()
-                .background(Color.blue)
+                .background(Color(red: 45/255, green: 154/255, blue: 161/255))
                 .foregroundColor(.white)
                 .cornerRadius(10)
             }
@@ -87,7 +87,7 @@ struct MyTripView: View {
                                     .scaledToFit()
                                     .frame(width: 30, height: 30) // Smaller button size
                                     .padding(10)
-                                    .background(Color.green)
+                                    .background(Color(red: 45/255, green: 154/255, blue: 161/255))
                                     .foregroundColor(.white)
                                     .clipShape(Circle()) // Make it circular
                                     .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 1)

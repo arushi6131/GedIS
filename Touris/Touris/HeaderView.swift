@@ -18,6 +18,7 @@ struct HeaderView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding()
+                .foregroundColor(Color(red: 45.0/255, green: 154.0/255, blue: 161.0/255))
             Spacer() // Push the profile button to the right
             Button(action: {
                 isProfileViewPresented.toggle()
