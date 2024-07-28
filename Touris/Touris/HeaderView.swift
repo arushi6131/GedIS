@@ -40,7 +40,7 @@ struct HeaderView: View {
         .background(Color.white) // Set a background color for the header
         .shadow(radius: 2) // Add a shadow for a slight elevation effect
         .sheet(isPresented: $isProfileViewPresented) {
-            ProfileView()
+            PProfileView()
         }
     }
 }

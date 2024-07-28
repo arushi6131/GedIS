@@ -134,22 +134,28 @@ struct MyTripMap: View {
                 Text(model1.routeDetails)
                     .padding()
             }
-            Button("Calculate Route") {
-                Task {
-                    await model1.solveRoute()
+            if model1.selectedStops.count >= 2 {
+                Button("Calculate Route") {
+                    Task {
+                        await model1.solveRoute()
+                    }
                 }
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
             }
-            .padding()
             Button("Save Route Details") {
                 model1.saveRouteDetails()
             }
             .padding()
-            .background(Color.blue)
+            .background(Color.gray)
             .foregroundColor(.white)
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
     }
 }
+
 
 
 extension Model1 {
