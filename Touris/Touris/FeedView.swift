@@ -4,6 +4,9 @@ struct CardView: View {
     var title: String
     var description: String
     var images: [UIImage]
+    var likeCount: Int = 0
+    var commentCount: Int = 0
+    var profileImage: UIImage?
 
     var body: some View {
         VStack(spacing: 10) {
@@ -23,8 +26,18 @@ struct CardView: View {
                 .padding(.horizontal)
             }
             
-            HStack{
-                // Title and Description
+            // Title and Description with Profile Picture
+            HStack {
+                // Profile Picture
+                if let profileImage = profileImage {
+                    Image(uiImage: profileImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                        .padding()
+                }
+                
                 VStack(alignment: .leading, spacing: 5) {
                     Text(title)
                         .font(.headline)
@@ -32,9 +45,24 @@ struct CardView: View {
                         .font(.subheadline)
                         .multilineTextAlignment(.leading)
                 }
-                .padding([.leading, .trailing, .bottom])
+                .padding([.leading, .trailing])
                 .frame(maxWidth: .infinity, alignment: .leading)
+                
             }
+            
+            // Like and Comment Icons with Counts
+            HStack {
+                Image(systemName: "heart")
+                    .foregroundColor(.red)
+                Text("\(likeCount)")
+                
+                Image(systemName: "bubble.right")
+                    .foregroundColor(.blue)
+                Text("\(commentCount)")
+                
+                Spacer()
+            }
+            .padding()
         }
         .frame(maxWidth: 350)
         .background(Color.white)
@@ -44,6 +72,7 @@ struct CardView: View {
     }
 }
 
+
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView(title: "Sample Title", description: "Sample Description", images: [UIImage(named: "sample_image")!])
@@ -52,18 +81,16 @@ struct CardView_Previews: PreviewProvider {
 
 
 
-import SwiftUI
-
 struct FeedView: View {
     @EnvironmentObject var postsViewModel: PostsViewModel
     @State private var imagesDict: [Int: [UIImage]] = [:]
     
     @State private var allItineraries: [Itinerary] = [
-        Itinerary(id: 1, name: "Hollywood", description: "An exciting trip to Hollywood!", locations: [Location(name: "Walk of Fame", description: "Looking at the walk of fame stars!", photos: ["sas4", "sas3"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)]),
-        Itinerary(id: 2, name: "Beverly Hills", description: "Beverly Hills Shopping", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["sas1","sas2"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["sas5"], x: -118.352918, y: 34.137743, rating: 5)]),
-        Itinerary(id: 3, name: "Santa Monica", description: "A fun day at the beach!", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["feedimg1"], x: -118.352918, y: 34.137743, rating: 5)]),
-        Itinerary(id: 4, name: "Inglewood", description: "Adventure in Inglewood", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["feedimg2","Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)]),
-        Itinerary(id: 5, name: "Pasadena", description: "Road Trip to Pasadena!", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["feedim3","Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)])
+        Itinerary(id: 1, name: "Hollywood", description: "An exciting trip to Hollywood!", locations: [Location(name: "Walk of Fame", description: "Looking at the walk of fame stars!", photos: ["sas4", "sas3"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)], likeCount:35, commentCount:5, profilePicture: UIImage(named: "dan")),
+        Itinerary(id: 2, name: "Beverly Hills", description: "Beverly Hills Shopping", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["sas1","sas2"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["sas5"], x: -118.352918, y: 34.137743, rating: 5)], likeCount:75, commentCount:9, profilePicture: UIImage(named: "aru")),
+        Itinerary(id: 3, name: "Santa Monica", description: "A fun day at the beach!", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["feedimg1"], x: -118.352918, y: 34.137743, rating: 5)], likeCount:53, commentCount:1, profilePicture: UIImage(named: "sas")),
+        Itinerary(id: 4, name: "Inglewood", description: "Adventure in Inglewood", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["feedimg2","Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)], likeCount:66, commentCount:8, profilePicture: UIImage(named: "profile_picture")),
+        Itinerary(id: 5, name: "Pasadena", description: "Road Trip to Pasadena!", locations: [Location(name: "Rodeo Drive", description: "Most Expensive Shopping place in the world", photos: ["feedim3","Nobu1"], x: -118.383736, y: 34.052235, rating: 5), Location(name: "Universal Studios", description: "Theme park with the family", photos: ["Universal1"], x: -118.352918, y: 34.137743, rating: 5)], likeCount:120, commentCount:2, profilePicture: UIImage(named: "Arno"))
     ]
 
     var body: some View {
@@ -73,7 +100,14 @@ struct FeedView: View {
                     ForEach(postsViewModel.itineraries + allItineraries) { itinerary in
                         if let images = imagesDict[itinerary.id] {
                             NavigationLink(destination: CardDetailView(itinerary: itinerary)) {
-                                CardView(title: itinerary.name, description: itinerary.description, images: images)
+                                CardView(
+                                    title: itinerary.name,
+                                    description: itinerary.description,
+                                    images: images,
+                                    likeCount: itinerary.likeCount ?? 0,
+                                    commentCount: itinerary.commentCount ?? 0,
+                                    profileImage: itinerary.profilePicture
+                                )
                             }
                         }
                     }
@@ -127,6 +161,9 @@ struct Itinerary: Identifiable {
     var name: String
     var description: String
     var locations: [Location]
+    var likeCount: Int?
+    var commentCount: Int?
+    var profilePicture: UIImage?
 }
 
 struct Location: Identifiable, Hashable {
