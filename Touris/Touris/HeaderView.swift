@@ -14,11 +14,11 @@ struct HeaderView: View {
 
     var body: some View {
         HStack {
-            Text("Touris")
-                .font(.largeTitle)
+            Text("TOURIS")
+                .font(.custom("Lovelo", size: 34))
                 .fontWeight(.bold)
                 .padding()
-                .foregroundColor(Color(red: 45.0/255, green: 154.0/255, blue: 161.0/255))
+                .foregroundColor(.black)
             Spacer() // Push the profile button to the right
             Button(action: {
                 isProfileViewPresented.toggle()
