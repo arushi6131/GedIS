@@ -5,9 +5,7 @@ import ArcGIS
 let predefinedLocations = [
     (name: "Beverly Hills", description: "A beautiful city known for its upscale shops and celebrity homes.", x: 34.073620, y: -118.400356),
     (name: "Hollywood Sign", description: "An iconic landmark and American cultural symbol.", x: 34.134115, y: -118.321548),
-    (name: "Santa Monica", description: "A beachfront city known for its pier and beautiful coastline.", x: 34.019454, y: -118.491191),
-    (name: "Inglewood", description: "A city known for its sports and entertainment venues.", x: 33.961680, y: -118.353131),
-    (name: "Pasadena", description: "A city known for its cultural and scientific institutions.", x: 34.147785, y: -118.144516)
+    (name: "Santa Monica", description: "A beachfront city known for its pier and beautiful coastline.", x: 34.019454, y: -118.491191)
 ]
 
 class Model1: ObservableObject {
